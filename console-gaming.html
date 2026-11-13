@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Level Gaming | Console Gaming</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+    <div class="logo-text">
+        <span>NEXT LEVEL</span>
+        <span>GAMING & ESPORTS ARENA</span>
+    </div>
+    
+    <div class="nav-links">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="about.html" class="nav-link">ABOUT US</a>
+        <a href="experiences.html" class="nav-link">OVERVIEW</a>
+        <div class="nav-dropdown">
+            <a href="experiences.html" class="nav-link">EXPERIENCES</a>
+            <div class="nav-dropdown-menu">
+                <a href="pc-gaming.html">PC GAMING</a>
+                <a href="console-gaming.html">CONSOLE GAMING</a>
+                <a href="esports-arena.html">ESPORTS ARENA</a>
+                <a href="booking.html">CALCULATE FEES / BOOK</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="tournaments.html" class="nav-link">COMMUNITY</a>
+            <div class="nav-dropdown-menu">
+                <a href="tournaments.html">TOURNAMENTS</a>
+                <a href="membership.html">VIP MEMBERSHIP</a>
+                <a href="squad.html">SQUAD MANAGEMENT</a>
+                <a href="notifications.html">NOTIFICATIONS</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="profile.html" class="nav-link">ACCOUNT &amp; SUPPORT</a>
+            <div class="nav-dropdown-menu">
+                <a href="profile.html">PLAYER PROFILE</a>
+                <a href="login.html">LOG IN / SIGN UP</a>
+                <a href="checkout.html">PAYMENT</a>
+                <a href="checkout.html">CHECKOUT</a>
+                <a href="contact.html">CONTACT US</a>
+            </div>
+        </div>
+        <a href="booking.html" class="nav-book-btn">BOOK NOW</a>
+    </div>
+
+    <button class="menu-btn" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <h2>NAVIGATION</h2>
+            <button class="close-btn" onclick="toggleMenu()">✕</button>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">MAIN</div>
+            <a href="index.html" class="menu-link">HOME</a>
+            <a href="about.html" class="menu-link">ABOUT US</a>
+            <a href="experiences.html" class="menu-link">OVERVIEW</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">EXPERIENCES</div>
+            <a href="pc-gaming.html" class="menu-link">PC GAMING</a>
+            <a href="console-gaming.html" class="menu-link">CONSOLE GAMING</a>
+            <a href="esports-arena.html" class="menu-link">ESPORTS ARENA</a>
+            <a href="booking.html" class="menu-link red">CALCULATE FEES / BOOK</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">COMMUNITY</div>
+            <a href="tournaments.html" class="menu-link">TOURNAMENTS</a>
+            <a href="membership.html" class="menu-link">VIP MEMBERSHIP</a>
+            <a href="squad.html" class="menu-link">SQUAD MANAGEMENT</a>
+            <a href="notifications.html" class="menu-link">NOTIFICATIONS</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">ACCOUNT AND SUPPORT</div>
+            <a href="profile.html" class="menu-link">PLAYER PROFILE</a>
+            <a href="login.html" class="menu-link">LOG IN / SIGN UP</a>
+            <a href="checkout.html" class="menu-link">PAYMENT</a>
+            <a href="checkout.html" class="menu-link">CHECKOUT</a>
+            <a href="contact.html" class="menu-link">CONTACT US</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-title">
+            <h2>CONSOLE GAMING</h2>
+            <p>Next-Gen Lounge Gaming</p>
+        </div>
+        <img src="images/consolegaming.jpeg" alt="Console Gaming" style="width: 100%; border-radius: 8px; margin-bottom: 20px;">
+        <p style="color: #ccc; font-size: 1rem; margin-bottom: 20px; line-height: 1.6;">Immerse yourself in competitive head-to-head multiplayer couch gaming, sports simulators, and fighting tournaments in our high-end acoustic station setups.</p>
+        <div class="pricing-box">
+            <h4>Starting at R60 / hour per station</h4>
+            <p>Capacity: Up to 16 concurrent players</p>
+        </div>
+        <h3 style="font-size: 1rem; font-weight: 800; text-transform: uppercase; margin-bottom: 15px;">CONSOLE FEATURES</h3>
+        <ul class="feature-list">
+            <li>PlayStation 5 & Xbox Series X</li>
+            <li>65" 4K OLED Low-Latency TV Displays</li>
+            <li>Pro Controllers (Scuf / DualSense Edge)</li>
+            <li>Co-Op & Fighting game libraries</li>
+        </ul>
+        <div style="display: flex; gap: 10px;">
+            <a href="booking.html" class="btn btn-outline" style="flex: 1;">CALCULATE FEES</a>
+            <a href="booking.html" class="btn btn-primary" style="flex: 1;">BOOK EXPERIENCE</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script>
+        function toggleMenu() {
+            document.getElementById("mobileMenu").classList.toggle("active");
+            document.body.style.overflow = document.getElementById("mobileMenu").classList.contains("active") ? "hidden" : "auto";
+        }
+        const currentPath = window.location.pathname.split("/").pop() || "index.html";
+        let foundCurrent = false;
+       document.querySelectorAll('.menu-link, .nav-link').forEach(link => {
+    if (link.getAttribute('href') === currentPath && !foundCurrent) {
+        foundCurrent = true;
+        link.classList.add('active');
+    }
+});
+    </script>
+</body>
+</html>

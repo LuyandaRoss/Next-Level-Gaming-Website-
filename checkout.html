@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Level Gaming | Checkout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+    <div class="logo-text">
+        <span>NEXT LEVEL</span>
+        <span>GAMING & ESPORTS ARENA</span>
+    </div>
+    
+    <div class="nav-links">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="about.html" class="nav-link">ABOUT US</a>
+        <a href="experiences.html" class="nav-link">OVERVIEW</a>
+        <div class="nav-dropdown">
+            <a href="experiences.html" class="nav-link">EXPERIENCES</a>
+            <div class="nav-dropdown-menu">
+                <a href="pc-gaming.html">PC GAMING</a>
+                <a href="console-gaming.html">CONSOLE GAMING</a>
+                <a href="esports-arena.html">ESPORTS ARENA</a>
+                <a href="booking.html">CALCULATE FEES / BOOK</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="tournaments.html" class="nav-link">COMMUNITY</a>
+            <div class="nav-dropdown-menu">
+                <a href="tournaments.html">TOURNAMENTS</a>
+                <a href="membership.html">VIP MEMBERSHIP</a>
+                <a href="squad.html">SQUAD MANAGEMENT</a>
+                <a href="notifications.html">NOTIFICATIONS</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="profile.html" class="nav-link">ACCOUNT &amp; SUPPORT</a>
+            <div class="nav-dropdown-menu">
+                <a href="profile.html">PLAYER PROFILE</a>
+                <a href="login.html">LOG IN / SIGN UP</a>
+                <a href="checkout.html">PAYMENT</a>
+                <a href="checkout.html">CHECKOUT</a>
+                <a href="contact.html">CONTACT US</a>
+            </div>
+        </div>
+        <a href="booking.html" class="nav-book-btn">BOOK NOW</a>
+    </div>
+
+    <button class="menu-btn" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+    
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <h2>NAVIGATION</h2>
+            <button class="close-btn" onclick="toggleMenu()">✕</button>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">MAIN</div>
+            <a href="index.html" class="menu-link">HOME</a>
+            <a href="about.html" class="menu-link">ABOUT US</a>
+            <a href="experiences.html" class="menu-link">OVERVIEW</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">EXPERIENCES</div>
+            <a href="pc-gaming.html" class="menu-link">PC GAMING</a>
+            <a href="console-gaming.html" class="menu-link">CONSOLE GAMING</a>
+            <a href="esports-arena.html" class="menu-link">ESPORTS ARENA</a>
+            <a href="booking.html" class="menu-link red">CALCULATE FEES / BOOK</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">COMMUNITY</div>
+            <a href="tournaments.html" class="menu-link">TOURNAMENTS</a>
+            <a href="membership.html" class="menu-link">VIP MEMBERSHIP</a>
+            <a href="squad.html" class="menu-link">SQUAD MANAGEMENT</a>
+            <a href="notifications.html" class="menu-link">NOTIFICATIONS</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">ACCOUNT AND SUPPORT</div>
+            <a href="profile.html" class="menu-link">PLAYER PROFILE</a>
+            <a href="login.html" class="menu-link">LOG IN / SIGN UP</a>
+            <a href="checkout.html" class="menu-link">PAYMENT</a>
+            <a href="checkout.html" class="menu-link">CHECKOUT</a>
+            <a href="contact.html" class="menu-link">CONTACT US</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-title">
+            <h2>CHECKOUT ORDERS</h2>
+            <p>Save your booking or membership order to your account. Payment processing is not enabled yet.</p>
+        </div>
+        
+        <a href="#checkout-form" class="btn btn-primary" style="margin-top: 20px; margin-bottom: 50px;">CONTINUE TO CHECKOUT</a>
+
+        <div class="section-title" id="checkout-form">
+            <h2>CHECKOUT</h2>
+            <p>Review your order and save it to your account.</p>
+        </div>
+
+        <div class="card">
+            <h3 style="font-size: 1.1rem; text-transform: uppercase; margin-bottom: 20px;">ORDER SUMMARY</h3>
+            
+            <div class="quote-row" style="border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 15px;">
+                <span>Item</span>
+                <span id="summaryItem" style="color: #fff; font-weight: bold;">Gaming session</span>
+            </div>
+            
+            <div class="quote-row" id="billingPeriodRow" style="display: none; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 15px;">
+                <span>Billing period</span>
+                <span id="summaryPeriod" style="color: #fff; font-weight: bold;">Monthly</span>
+            </div>
+
+            <div class="quote-row" style="margin-bottom: 5px;">
+                <span style="font-size: 0.8rem; text-transform: uppercase; font-weight: bold; color: #888;">ESTIMATED ORDER TOTAL</span>
+            </div>
+            <div style="color: #c40000; font-size: 1.8rem; font-weight: 900;" id="finalAmount">Amount unavailable</div>
+        </div>
+
+        <div class="demo-notice">
+            <h4>ORDER RECORDING ONLY</h4>
+            <p>This demo saves your order to Supabase as pending. It does not process payments or collect card details.</p>
+        </div>
+
+        <button class="btn btn-grey" style="color: #666;" id="orderButton" onclick="saveOrder()">AMOUNT UNAVAILABLE</button>
+        <p id="checkoutMessage" class="login-note" role="status" aria-live="polite"></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script>
+        function toggleMenu() {
+            document.getElementById("mobileMenu").classList.toggle("active");
+            document.body.style.overflow = document.getElementById("mobileMenu").classList.contains("active") ? "hidden" : "auto";
+        }
+
+        const currentPath = window.location.pathname.split("/").pop() || "index.html";
+        let foundCurrent = false;
+       document.querySelectorAll('.menu-link, .nav-link').forEach(link => {
+    if (link.getAttribute('href') === currentPath && !foundCurrent) {
+        foundCurrent = true;
+        link.classList.add('active');
+    }
+});
+        const orderButton = document.getElementById('orderButton');
+        const summaryItem = document.getElementById('summaryItem');
+        const billingPeriodRow = document.getElementById('billingPeriodRow');
+        const summaryPeriod = document.getElementById('summaryPeriod');
+        const finalAmount = document.getElementById('finalAmount');
+
+        const savedMembership = localStorage.getItem('orderItem');
+        const savedMembershipPrice = localStorage.getItem('orderPrice');
+        const savedMembershipPeriod = localStorage.getItem('orderPeriod');
+        const savedBookingTotal = localStorage.getItem('totalAmount');
+
+        if (savedMembership) {
+            summaryItem.innerText = savedMembership;
+            billingPeriodRow.style.display = 'flex';
+            summaryPeriod.innerText = savedMembershipPeriod;
+            finalAmount.innerText = 'R' + savedMembershipPrice + ' / month';
+            
+            if (orderButton) {
+                orderButton.innerText = 'SAVE ORDER · R' + savedMembershipPrice;
+                orderButton.style.backgroundColor = '#b30000';
+                orderButton.style.color = '#fff';
+                orderButton.classList.remove('btn-grey');
+            }
+        } else if (savedBookingTotal) {
+            summaryItem.innerText = 'Gaming session';
+            finalAmount.innerText = 'R ' + savedBookingTotal;
+            
+            if (orderButton) {
+                orderButton.innerText = 'SAVE ORDER · R ' + savedBookingTotal;
+                orderButton.style.backgroundColor = '#b30000';
+                orderButton.style.color = '#fff';
+                orderButton.classList.remove('btn-grey');
+            }
+        }
+
+        async function saveOrder() {
+            const message = document.getElementById('checkoutMessage');
+            const button = document.getElementById('orderButton');
+            const amount = savedMembership
+                ? Number(savedMembershipPrice)
+                : Number(savedBookingTotal);
+            if (!Number.isFinite(amount) || amount <= 0) {
+                message.textContent = "There is no order amount to save. Start from booking or membership.";
+                return;
+            }
+
+            const { data: { session }, error: authError } = await window.supabaseClient.auth.getSession();
+            const user = session ? session.user : null;
+            if (authError) {
+                console.error("Could not verify the current Supabase user:", authError);
+                message.textContent = "We couldn't verify your account. Please try again.";
+                return;
+            }
+            if (!user) {
+                message.innerHTML = 'Please <a href="login.html?next=checkout.html">log in or create an account</a> before saving your order.';
+                return;
+            }
+
+            button.disabled = true;
+            message.textContent = "Saving your order...";
+            const { data, error } = await window.supabaseClient
+                .from('checkout_orders')
+                .insert({
+                    user_id: user.id,
+                    booking_id: savedMembership ? null : localStorage.getItem('bookingId'),
+                    order_type: savedMembership ? 'membership' : 'booking',
+                    item: savedMembership || 'Gaming session',
+                    amount,
+                    billing_period: savedMembership ? savedMembershipPeriod : null,
+                    payment_method: 'demo',
+                    status: 'pending'
+                })
+                .select('id')
+                .single();
+
+            if (error) {
+                console.error("Could not save checkout order:", error);
+                message.textContent = "We couldn't save your order. Please try again.";
+                button.disabled = false;
+                return;
+            }
+
+            localStorage.removeItem('orderItem');
+            localStorage.removeItem('orderPrice');
+            localStorage.removeItem('orderPeriod');
+            localStorage.removeItem('totalAmount');
+            localStorage.removeItem('bookingId');
+            let emailNotice = ' The notification emails could not be confirmed.';
+            try {
+                const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+                    ? 'https://next-level-gaming-arena.vercel.app/api/order-notification'
+                    : '/api/order-notification';
+                const emailResponse = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + session.access_token,
+                    },
+                    body: JSON.stringify({ type: 'order', id: data.id })
+                });
+                const emailResult = await emailResponse.json().catch(() => ({}));
+                if (emailResponse.ok && emailResult.customerSent && emailResult.adminSent) {
+                    emailNotice = ' Notification emails were sent to you and the venue.';
+                } else if (emailResult.error) {
+                    emailNotice = ' Email status: ' + emailResult.error;
+                }
+            } catch (emailError) {
+                console.error('Order was saved but notification emails failed:', emailError);
+                emailNotice = ' The order is saved, but email delivery could not be confirmed.';
+            }
+            message.textContent = 'Order ' + data.id.slice(0, 8) + ' saved as pending. No payment was taken.' + emailNotice + ' View your account from your profile.';
+            button.textContent = "ORDER SAVED";
+        }
+    </script>
+</body>
+</html>

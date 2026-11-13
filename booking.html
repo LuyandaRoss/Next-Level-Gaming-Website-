@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Level Gaming | Calculate Fees &amp; Book</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+    <div class="logo-text">
+        <span>NEXT LEVEL</span>
+        <span>GAMING & ESPORTS ARENA</span>
+    </div>
+    
+    <div class="nav-links">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="about.html" class="nav-link">ABOUT US</a>
+        <a href="experiences.html" class="nav-link">OVERVIEW</a>
+        <div class="nav-dropdown">
+            <a href="experiences.html" class="nav-link">EXPERIENCES</a>
+            <div class="nav-dropdown-menu">
+                <a href="pc-gaming.html">PC GAMING</a>
+                <a href="console-gaming.html">CONSOLE GAMING</a>
+                <a href="esports-arena.html">ESPORTS ARENA</a>
+                <a href="booking.html">CALCULATE FEES / BOOK</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="tournaments.html" class="nav-link">COMMUNITY</a>
+            <div class="nav-dropdown-menu">
+                <a href="tournaments.html">TOURNAMENTS</a>
+                <a href="membership.html">VIP MEMBERSHIP</a>
+                <a href="squad.html">SQUAD MANAGEMENT</a>
+                <a href="notifications.html">NOTIFICATIONS</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="profile.html" class="nav-link">ACCOUNT &amp; SUPPORT</a>
+            <div class="nav-dropdown-menu">
+                <a href="profile.html">PLAYER PROFILE</a>
+                <a href="login.html">LOG IN / SIGN UP</a>
+                <a href="checkout.html">PAYMENT</a>
+                <a href="checkout.html">CHECKOUT</a>
+                <a href="contact.html">CONTACT US</a>
+            </div>
+        </div>
+        <a href="booking.html" class="nav-book-btn">BOOK NOW</a>
+    </div>
+
+    <button class="menu-btn" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <h2>NAVIGATION</h2>
+            <button class="close-btn" onclick="toggleMenu()">✕</button>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">MAIN</div>
+            <a href="index.html" class="menu-link">HOME</a>
+            <a href="about.html" class="menu-link">ABOUT US</a>
+            <a href="experiences.html" class="menu-link">OVERVIEW</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">EXPERIENCES</div>
+            <a href="pc-gaming.html" class="menu-link">PC GAMING</a>
+            <a href="console-gaming.html" class="menu-link">CONSOLE GAMING</a>
+            <a href="esports-arena.html" class="menu-link">ESPORTS ARENA</a>
+            <a href="booking.html" class="menu-link red">CALCULATE FEES / BOOK</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">COMMUNITY</div>
+            <a href="tournaments.html" class="menu-link">TOURNAMENTS</a>
+            <a href="membership.html" class="menu-link">VIP MEMBERSHIP</a>
+            <a href="squad.html" class="menu-link">SQUAD MANAGEMENT</a>
+            <a href="notifications.html" class="menu-link">NOTIFICATIONS</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">ACCOUNT AND SUPPORT</div>
+            <a href="profile.html" class="menu-link">PLAYER PROFILE</a>
+            <a href="login.html" class="menu-link">LOG IN / SIGN UP</a>
+            <a href="checkout.html" class="menu-link">PAYMENT</a>
+            <a href="checkout.html" class="menu-link">CHECKOUT</a>
+            <a href="contact.html" class="menu-link">CONTACT US</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Confirmation display (hidden by default) -->
+        <div id="bookingConfirmation" style="display: none;"></div>
+
+        <!-- Main booking form wrapper -->
+        <div id="bookingFormWrapper">
+            <div class="section-title">
+                <h2>CALCULATE FEES &amp; BOOK</h2>
+                <p>Get an instant live quotation and submit your booking request</p>
+            </div>
+
+            <!-- Dynamic auth banner -->
+            <div id="bookingAuthBanner" class="auth-banner">
+                <span>Checking account status...</span>
+            </div>
+
+            <div class="step-header">1. CUSTOMER INFORMATION</div>
+            <div class="form-group">
+                <label>FIRST NAME</label>
+                <input type="text" id="firstName" class="form-control" placeholder="e.g. Zeeno" required>
+            </div>
+            <div class="form-group">
+                <label>SURNAME</label>
+                <input type="text" id="surname" class="form-control" placeholder="e.g. Ross" required>
+            </div>
+            <div class="form-group">
+                <label>EMAIL ADDRESS</label>
+                <input type="email" id="email" class="form-control" placeholder="zeeno@example.com" required>
+            </div>
+            <div class="form-group">
+                <label>PHONE NUMBER</label>
+                <input type="tel" id="phone" class="form-control" maxlength="15" placeholder="0821234567" required>
+            </div>
+
+            <div class="step-header">2. SELECT EXPERIENCE</div>
+            <div class="exp-selector">
+                <div class="exp-btn active" data-rate="80" onclick="selectExp(this)">PC GAMING</div>
+                <div class="exp-btn" data-rate="60" onclick="selectExp(this)">CONSOLE<br>GAMING</div>
+                <div class="exp-btn" data-rate="120" onclick="selectExp(this)">ESPORTS ARENA</div>
+            </div>
+
+            <div class="step-header">3. PLAYERS &amp; DURATION</div>
+            <div class="form-group">
+                <label>NUMBER OF PLAYERS (1-20)</label>
+                <div class="stepper">
+                    <button type="button" onclick="updateStep('players', -1)">-</button>
+                    <input type="number" id="players" value="1" min="1" max="20" readonly style="color: #c40000; font-size: 1.5rem; font-weight: 800;">
+                    <button type="button" onclick="updateStep('players', 1)">+</button>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top: 20px;">
+                <label>SESSION HOURS (1 - 8 HOURS)</label>
+                <div class="stepper">
+                    <button type="button" onclick="updateStep('hours', -1)">-</button>
+                    <input type="number" id="hours" value="1" min="1" max="8" readonly style="color: #c40000; font-size: 1.5rem; font-weight: 800;">
+                    <button type="button" onclick="updateStep('hours', 1)">+</button>
+                </div>
+            </div>
+
+            <div class="step-header">4. OPTIONAL EXTRAS</div>
+            <div class="extra-item">
+                <label class="extra-label">
+                    <input type="checkbox" class="extra-checkbox" data-name="Gamer Snack Pack &amp; Energy Drink" data-price="65" onchange="calculateTotal()">
+                    Gamer Snack Pack &amp; Energy Drink
+                </label>
+                <span class="extra-price">+R65/p</span>
+            </div>
+            <div class="extra-item">
+                <label class="extra-label">
+                    <input type="checkbox" class="extra-checkbox" data-name="VR Experience Access (COMING SOON Demo)" data-price="50" onchange="calculateTotal()">
+                    VR Experience Access (COMING SOON Demo)
+                </label>
+                <span class="extra-price">+R50/p</span>
+            </div>
+            <div class="extra-item">
+                <label class="extra-label">
+                    <input type="checkbox" class="extra-checkbox" data-name="Tournament Pro Noise-Cancelling Headset" data-price="30" onchange="calculateTotal()">
+                    Tournament Pro Noise-Cancelling Headset
+                </label>
+                <span class="extra-price">+R30/p</span>
+            </div>
+            <div class="extra-item">
+                <label class="extra-label">
+                    <input type="checkbox" class="extra-checkbox" data-name="Private VIP Lounge Access" data-price="100" onchange="calculateTotal()">
+                    Private VIP Lounge Access
+                </label>
+                <span class="extra-price">+R100/p</span>
+            </div>
+
+            <div class="quote-box">
+                <h3>QUOTATION SUMMARY</h3>
+                <div class="quote-row">
+                    <span>Subtotal</span>
+                    <span id="subtotalDisplay">R 80.00</span>
+                </div>
+                <div class="quote-row">
+                    <span>VAT (15%)</span>
+                    <span id="vatDisplay">R 12.00</span>
+                </div>
+                <div class="quote-row total">
+                    <span>Estimated Total</span>
+                    <span id="totalDisplay">R 92.00</span>
+                </div>
+            </div>
+
+            <button id="bookingSubmit" class="btn btn-primary" onclick="saveBookingAndContinue()">SUBMIT BOOKING &amp; REQUEST QUOTATION</button>
+            <p id="bookingMessage" class="login-note" role="status" aria-live="polite" style="margin-top: 15px;"></p>
+            <button class="btn btn-outline" onclick="resetForm()">RESET FORM</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script>
+    function toggleMenu() {
+        document.getElementById("mobileMenu").classList.toggle("active");
+        document.body.style.overflow = document.getElementById("mobileMenu").classList.contains("active") ? "hidden" : "auto";
+    }
+
+    const currentPath = window.location.pathname.split("/").pop() || "index.html";
+    let foundCurrent = false;
+    document.querySelectorAll('.menu-link, .nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPath && !foundCurrent) {
+            foundCurrent = true;
+            link.classList.add('active');
+        }
+    });
+
+    let baseRate = 80;
+
+    function selectExp(element) {
+        document.querySelectorAll('.exp-btn').forEach(btn => btn.classList.remove('active'));
+        element.classList.add('active');
+        baseRate = parseInt(element.getAttribute('data-rate'));
+        calculateTotal();
+    }
+
+    function updateStep(id, change) {
+        const input = document.getElementById(id);
+        if (!input) return;
+        let val = parseInt(input.value);
+        const min = parseInt(input.getAttribute('min'));
+        const max = parseInt(input.getAttribute('max'));
+        
+        val += change;
+        if (val >= min && val <= max) {
+            input.value = val;
+            calculateTotal();
+        }
+    }
+
+    function calculateTotal() {
+        const playersInput = document.getElementById('players');
+        if (!playersInput) return;
+
+        const players = parseInt(playersInput.value) || 1;
+        const hours = parseInt(document.getElementById('hours').value) || 1;
+        
+        let subtotal = baseRate * players * hours;
+
+        document.querySelectorAll('.extra-checkbox').forEach(box => {
+            if (box.checked) {
+                subtotal += (parseInt(box.getAttribute('data-price')) * players);
+            }
+        });
+
+        const vat = subtotal * 0.15;
+        const total = subtotal + vat;
+
+        document.getElementById('subtotalDisplay').innerText = 'R ' + subtotal.toFixed(2);
+        document.getElementById('vatDisplay').innerText = 'R ' + vat.toFixed(2);
+        document.getElementById('totalDisplay').innerText = 'R ' + total.toFixed(2);
+        
+        localStorage.setItem('totalAmount', total.toFixed(2));
+    }
+
+    function validateForm() {
+        const fName = document.getElementById('firstName').value.trim();
+        const surname = document.getElementById('surname').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        
+        if (!fName || !surname || !email || !phone) {
+            alert("Please fill in all Customer Information fields (First Name, Surname, Email, Phone) before continuing.");
+            return false; 
+        }
+        return true; 
+    }
+
+    // Save current form inputs so user won't lose them if redirected to login
+    function captureFormDraft() {
+        const selectedExpBtn = document.querySelector('.exp-btn.active');
+        const checkedExtras = [...document.querySelectorAll('.extra-checkbox')].map(cb => cb.checked);
+        const draft = {
+            firstName: document.getElementById('firstName').value.trim(),
+            surname: document.getElementById('surname').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            phone: document.getElementById('phone').value.trim(),
+            experienceRate: selectedExpBtn ? selectedExpBtn.getAttribute('data-rate') : '80',
+            players: document.getElementById('players').value,
+            hours: document.getElementById('hours').value,
+            checkedExtras: checkedExtras
+        };
+        localStorage.setItem('nlg_booking_draft', JSON.stringify(draft));
+    }
+
+    function saveDraftBeforeRedirect(e) {
+        captureFormDraft();
+    }
+
+    // Initialize user session & pre-fill form
+    async function initBookingPage() {
+        const banner = document.getElementById('bookingAuthBanner');
+        
+        try {
+            const { data: { session } } = await window.supabaseClient.auth.getSession();
+            const user = session ? session.user : null;
+
+            if (user) {
+                banner.className = 'auth-banner signed-in';
+                banner.innerHTML = `✓ Signed in as <strong>${user.email}</strong>. Your quotation will be saved to your account.`;
+
+                // Fetch profile to prefill name & phone
+                const { data: profile } = await window.supabaseClient
+                    .from('profiles')
+                    .select('full_name, phone')
+                    .eq('id', user.id)
+                    .maybeSingle();
+
+                const emailInput = document.getElementById('email');
+                if (!emailInput.value) emailInput.value = user.email || '';
+
+                if (profile) {
+                    if (profile.full_name && !document.getElementById('firstName').value) {
+                        const parts = profile.full_name.trim().split(/\s+/);
+                        document.getElementById('firstName').value = parts[0] || '';
+                        document.getElementById('surname').value = parts.slice(1).join(' ') || '';
+                    }
+                    if (profile.phone && !document.getElementById('phone').value) {
+                        document.getElementById('phone').value = profile.phone;
+                    }
+                }
+            } else {
+                banner.className = 'auth-banner';
+                banner.innerHTML = `Have an account? <a href="login.html?next=booking.html" onclick="saveDraftBeforeRedirect(event)">Log in or sign up</a> to auto-fill your details and save your quotation.`;
+            }
+        } catch (err) {
+            console.warn("Could not check auth status in booking:", err);
+            banner.innerHTML = `Welcome! Complete the form below to receive your quotation.`;
+        }
+
+        // Restore draft if user was redirected from login
+        const savedDraftRaw = localStorage.getItem('nlg_booking_draft');
+        if (savedDraftRaw) {
+            try {
+                const draft = JSON.parse(savedDraftRaw);
+                if (draft.firstName && !document.getElementById('firstName').value) document.getElementById('firstName').value = draft.firstName;
+                if (draft.surname && !document.getElementById('surname').value) document.getElementById('surname').value = draft.surname;
+                if (draft.phone && !document.getElementById('phone').value) document.getElementById('phone').value = draft.phone;
+                if (draft.players) document.getElementById('players').value = draft.players;
+                if (draft.hours) document.getElementById('hours').value = draft.hours;
+
+                if (draft.experienceRate) {
+                    const matchBtn = document.querySelector(`.exp-btn[data-rate="${draft.experienceRate}"]`);
+                    if (matchBtn) selectExp(matchBtn);
+                }
+
+                if (Array.isArray(draft.checkedExtras)) {
+                    const checkboxes = document.querySelectorAll('.extra-checkbox');
+                    draft.checkedExtras.forEach((isChecked, i) => {
+                        if (checkboxes[i]) checkboxes[i].checked = !!isChecked;
+                    });
+                }
+
+                calculateTotal();
+                localStorage.removeItem('nlg_booking_draft');
+            } catch (err) {
+                console.warn("Could not parse booking draft:", err);
+            }
+        }
+    }
+
+    async function saveBookingAndContinue() {
+        const message = document.getElementById('bookingMessage');
+        const submitButton = document.getElementById('bookingSubmit');
+        if (!validateForm()) return;
+
+        const { data: { session }, error: authError } = await window.supabaseClient.auth.getSession();
+        const user = session ? session.user : null;
+        if (authError) {
+            console.error("Could not verify the current Supabase user:", authError);
+            message.textContent = "We couldn't verify your account session. Please refresh and try again.";
+            return;
+        }
+
+        if (!user) {
+            captureFormDraft();
+            message.innerHTML = `Please <a href="login.html?next=booking.html" class="btn btn-outline" style="display:inline-block; margin-top:10px; font-weight:bold;">LOG IN OR SIGN UP TO SUBMIT</a><br><small style="color:#aaa;">Your form selections have been saved and will be restored right after you log in.</small>`;
+            return;
+        }
+
+        const selectedExperience = document.querySelector('.exp-btn.active');
+        const experienceNamesByRate = {
+            60: 'CONSOLE GAMING',
+            80: 'PC GAMING',
+            120: 'ESPORTS ARENA'
+        };
+        const experience = experienceNamesByRate[selectedExperience?.dataset.rate];
+        if (!experience) {
+            message.textContent = "Please select a valid gaming experience and try again.";
+            submitButton.disabled = false;
+            return;
+        }
+        const subtotal = Number(document.getElementById('subtotalDisplay').textContent.replace(/[^\d.]/g, ''));
+        const vat = Number(document.getElementById('vatDisplay').textContent.replace(/[^\d.]/g, ''));
+        const total = Number(document.getElementById('totalDisplay').textContent.replace(/[^\d.]/g, ''));
+
+        const booking = {
+            user_id: user.id,
+            first_name: document.getElementById('firstName').value.trim(),
+            surname: document.getElementById('surname').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            phone: document.getElementById('phone').value.trim(),
+            experience,
+            players: Number(document.getElementById('players').value),
+            hours: Number(document.getElementById('hours').value),
+            extras: [...document.querySelectorAll('.extra-checkbox:checked')].map(box => ({
+                name: box.getAttribute('data-name') || box.closest('.extra-item').querySelector('.extra-label').textContent.trim().replace(/\s+/g, ' '),
+                price_per_player: Number(box.dataset.price)
+            })),
+            subtotal,
+            vat,
+            total
+        };
+
+        submitButton.disabled = true;
+        message.textContent = "Saving your booking request and preparing your quotation...";
+
+        // 1. Save to Supabase bookings table
+        const { data, error } = await window.supabaseClient
+            .from('bookings')
+            .insert(booking)
+            .select('id, total, created_at')
+            .single();
+
+        if (error) {
+            console.error("Could not save booking to Supabase:", error);
+            message.textContent = "We couldn't save your booking. Error: " + error.message;
+            submitButton.disabled = false;
+            return;
+        }
+
+        // 2. Update user's profile with latest name and phone
+        try {
+            await window.supabaseClient
+                .from('profiles')
+                .update({
+                    full_name: `${booking.first_name} ${booking.surname}`.trim(),
+                    phone: booking.phone,
+                    updated_at: new Date().toISOString()
+                })
+                .eq('id', user.id);
+        } catch (profileErr) {
+            console.warn("Could not update profile details:", profileErr);
+        }
+
+        // 3. Send the quotation and owner alert through the serverless email endpoint.
+        let emailStatus = "The booking was saved, but email delivery could not be confirmed.";
+        try {
+                const accessToken = session.access_token;
+                const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+                    ? 'https://next-level-gaming-arena.vercel.app/api/booking-notification'
+                    : '/api/booking-notification';
+                const emailResponse = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${accessToken}`
+                    },
+                    body: JSON.stringify({
+                        bookingId: data.id,
+                        firstName: booking.first_name,
+                        surname: booking.surname,
+                        email: booking.email,
+                        phone: booking.phone,
+                        experience: booking.experience,
+                        players: booking.players,
+                        hours: booking.hours,
+                        extras: booking.extras,
+                        subtotal: booking.subtotal,
+                        vat: booking.vat,
+                        total: Number(data.total)
+                    })
+                });
+                const emailResult = await emailResponse.json().catch(() => ({}));
+                if (emailResponse.ok && emailResult.customerSent && emailResult.adminSent) {
+                    emailStatus = `Quotation email sent to ${booking.email}; booking alert sent to the venue.`;
+                } else if (emailResult.customerSent) {
+                    emailStatus = `Quotation email sent to ${booking.email}, but the venue alert could not be sent.`;
+                } else if (emailResult.error) {
+                    emailStatus = `The booking was saved, but email delivery failed: ${emailResult.error}`;
+                }
+        } catch (emailErr) {
+            console.warn("Serverless email notification failed:", emailErr);
+            emailStatus = "The booking was saved, but email delivery failed. Please contact us if you need a copy.";
+        }
+
+        // 4. Save booking details for checkout/profile continuity
+        localStorage.setItem('bookingId', data.id);
+        localStorage.setItem('totalAmount', Number(data.total).toFixed(2));
+        localStorage.removeItem('nlg_booking_draft');
+        localStorage.removeItem('orderItem');
+        localStorage.removeItem('orderPrice');
+        localStorage.removeItem('orderPeriod');
+
+        // 5. Display confirmation screen
+        showBookingConfirmation(booking, data.id, Number(data.total), emailStatus);
+    }
+
+    function showBookingConfirmation(booking, bookingId, total, emailStatus) {
+        const formWrapper = document.getElementById('bookingFormWrapper');
+        const confirmationDiv = document.getElementById('bookingConfirmation');
+
+        formWrapper.style.display = 'none';
+        confirmationDiv.style.display = 'block';
+
+        const shortId = bookingId ? bookingId.slice(0, 8) : 'NLG';
+        confirmationDiv.innerHTML = `
+            <div class="confirmation-card">
+                <div class="confirmation-badge">✓</div>
+                <h2 style="font-size: 1.6rem; margin-bottom: 12px; letter-spacing: 1px;">BOOKING REQUEST SUBMITTED!</h2>
+                <p style="color: #eee; font-size: 1.1rem; margin-bottom: 14px;">
+                    Thank you, <strong>${escapeHtml(booking.first_name)}</strong>! We have received your booking request for <strong>${escapeHtml(booking.experience)}</strong>.
+                </p>
+                <div style="background: rgba(196, 0, 0, 0.15); border: 1px solid rgba(196, 0, 0, 0.4); border-radius: 6px; padding: 14px 18px; margin: 20px 0; font-size: 0.95rem; color: #ffcccc;">
+                    ✉ ${escapeHtml(emailStatus)}
+                    <br><strong>No payment has been taken.</strong> This is a quotation request; the estimated total is not a payment due.
+                </div>
+                <div class="quote-box" style="text-align: left; max-width: 500px; margin: 0 auto 25px;">
+                    <div class="quote-row"><span>Booking Reference:</span> <strong>#${shortId}</strong></div>
+                    <div class="quote-row"><span>Experience:</span> <strong>${escapeHtml(booking.experience)}</strong></div>
+                    <div class="quote-row"><span>Players &amp; Duration:</span> <strong>${booking.players} player(s) · ${booking.hours} hour(s)</strong></div>
+                    <div class="quote-row"><span>Contact Phone:</span> <strong>${escapeHtml(booking.phone)}</strong></div>
+                    <div class="quote-row total"><span>Estimated Total:</span> <span>R ${total.toFixed(2)}</span></div>
+                </div>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="profile.html" class="btn btn-primary" style="margin: 0; min-width: 220px;">VIEW IN PLAYER PROFILE</a>
+                    <button class="btn btn-outline" onclick="resetFormForNewBooking()" style="margin: 0; min-width: 220px;">SUBMIT ANOTHER BOOKING</button>
+                </div>
+            </div>
+        `;
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function resetFormForNewBooking() {
+        document.getElementById('bookingConfirmation').style.display = 'none';
+        document.getElementById('bookingFormWrapper').style.display = 'block';
+        resetForm();
+        initBookingPage();
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
+    function resetForm() {
+        if (!document.getElementById('firstName')) return;
+        
+        document.getElementById('firstName').value = '';
+        document.getElementById('surname').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('phone').value = '';
+        
+        document.getElementById('players').value = 1;
+        document.getElementById('hours').value = 1;
+        
+        document.querySelectorAll('.extra-checkbox').forEach(box => box.checked = false);
+        document.querySelectorAll('.exp-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector('.exp-btn').classList.add('active');
+        baseRate = 80;
+        
+        const bookingMessage = document.getElementById('bookingMessage');
+        if (bookingMessage) bookingMessage.textContent = '';
+        const submitBtn = document.getElementById('bookingSubmit');
+        if (submitBtn) submitBtn.disabled = false;
+
+        calculateTotal();
+    }
+
+    // Initialize on page load
+    initBookingPage();
+    calculateTotal();
+</script>
+</body>
+</html>

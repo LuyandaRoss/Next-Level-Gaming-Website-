@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Level Gaming | Notifications</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <nav>
+    <div class="logo-text">
+        <span>NEXT LEVEL</span>
+        <span>GAMING & ESPORTS ARENA</span>
+    </div>
+    
+    <div class="nav-links">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="about.html" class="nav-link">ABOUT US</a>
+        <a href="experiences.html" class="nav-link">OVERVIEW</a>
+        <div class="nav-dropdown">
+            <a href="experiences.html" class="nav-link">EXPERIENCES</a>
+            <div class="nav-dropdown-menu">
+                <a href="pc-gaming.html">PC GAMING</a>
+                <a href="console-gaming.html">CONSOLE GAMING</a>
+                <a href="esports-arena.html">ESPORTS ARENA</a>
+                <a href="booking.html">CALCULATE FEES / BOOK</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="tournaments.html" class="nav-link">COMMUNITY</a>
+            <div class="nav-dropdown-menu">
+                <a href="tournaments.html">TOURNAMENTS</a>
+                <a href="membership.html">VIP MEMBERSHIP</a>
+                <a href="squad.html">SQUAD MANAGEMENT</a>
+                <a href="notifications.html">NOTIFICATIONS</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="profile.html" class="nav-link">ACCOUNT &amp; SUPPORT</a>
+            <div class="nav-dropdown-menu">
+                <a href="profile.html">PLAYER PROFILE</a>
+                <a href="login.html">LOG IN / SIGN UP</a>
+                <a href="checkout.html">PAYMENT</a>
+                <a href="checkout.html">CHECKOUT</a>
+                <a href="contact.html">CONTACT US</a>
+            </div>
+        </div>
+        <a href="booking.html" class="nav-book-btn">BOOK NOW</a>
+    </div>
+
+    <button class="menu-btn" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+    
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <h2>NAVIGATION</h2>
+            <button class="close-btn" onclick="toggleMenu()">✕</button>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">MAIN</div>
+            <a href="index.html" class="menu-link">HOME</a>
+            <a href="about.html" class="menu-link">ABOUT US</a>
+            <a href="experiences.html" class="menu-link">OVERVIEW</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">EXPERIENCES</div>
+            <a href="pc-gaming.html" class="menu-link">PC GAMING</a>
+            <a href="console-gaming.html" class="menu-link">CONSOLE GAMING</a>
+            <a href="esports-arena.html" class="menu-link">ESPORTS ARENA</a>
+            <a href="booking.html" class="menu-link red">CALCULATE FEES / BOOK</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">COMMUNITY</div>
+            <a href="tournaments.html" class="menu-link">TOURNAMENTS</a>
+            <a href="membership.html" class="menu-link">VIP MEMBERSHIP</a>
+            <a href="squad.html" class="menu-link">SQUAD MANAGEMENT</a>
+            <a href="notifications.html" class="menu-link">NOTIFICATIONS</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">ACCOUNT AND SUPPORT</div>
+            <a href="profile.html" class="menu-link">PLAYER PROFILE</a>
+            <a href="login.html" class="menu-link">LOG IN / SIGN UP</a>
+            <a href="checkout.html" class="menu-link">PAYMENT</a>
+            <a href="checkout.html" class="menu-link">CHECKOUT</a>
+            <a href="contact.html" class="menu-link">CONTACT US</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-title">
+            <h2>NOTIFICATIONS</h2>
+        </div>
+
+        <p id="notificationStatus" class="login-note" role="status" aria-live="polite">Loading your notifications...</p>
+        <div id="notificationList"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script>
+        function toggleMenu() {
+            document.getElementById("mobileMenu").classList.toggle("active");
+            document.body.style.overflow = document.getElementById("mobileMenu").classList.contains("active") ? "hidden" : "auto";
+        }
+        const currentPath = window.location.pathname.split("/").pop() || "index.html";
+        let foundCurrent = false;
+       document.querySelectorAll('.menu-link, .nav-link').forEach(link => {
+    if (link.getAttribute('href') === currentPath && !foundCurrent) {
+        foundCurrent = true;
+        link.classList.add('active');
+    }
+});
+
+        async function loadNotifications() {
+            const status = document.getElementById('notificationStatus');
+            const list = document.getElementById('notificationList');
+            const { data: { session }, error: authError } = await window.supabaseClient.auth.getSession();
+            const user = session ? session.user : null;
+            if (authError) {
+                console.error("Could not verify the current Supabase user:", authError);
+                status.textContent = "We couldn't load notifications. Please refresh and try again.";
+                return;
+            }
+            if (!user) {
+                status.innerHTML = 'Please <a href="login.html?next=notifications.html">log in</a> to see your notifications.';
+                return;
+            }
+
+            const { data, error } = await window.supabaseClient
+                .from('notifications')
+                .select('id, title, message, read_at, created_at')
+                .eq('user_id', user.id)
+                .order('created_at', { ascending: false })
+                .limit(50);
+            if (error) {
+                console.error("Could not load notifications:", error);
+                status.textContent = "We couldn't load notifications. Please refresh and try again.";
+                return;
+            }
+
+            status.textContent = data.length ? "" : "You don't have any notifications yet.";
+            data.forEach(notification => {
+                const card = document.createElement('article');
+                card.className = 'notification-card';
+                const header = document.createElement('div');
+                header.className = 'notif-header';
+                const title = document.createElement('div');
+                title.className = 'notif-title';
+                title.textContent = notification.title;
+                const time = document.createElement('div');
+                time.className = 'notif-time';
+                time.textContent = new Date(notification.created_at).toLocaleString();
+                header.append(title, time);
+
+                const body = document.createElement('p');
+                body.className = 'notif-msg';
+                body.textContent = notification.message;
+                card.append(header, body);
+                if (!notification.read_at) {
+                    const markRead = document.createElement('button');
+                    markRead.className = 'notification-read';
+                    markRead.type = 'button';
+                    markRead.textContent = 'MARK AS READ';
+                    markRead.addEventListener('click', async () => {
+                        markRead.disabled = true;
+                        const { error: updateError } = await window.supabaseClient
+                            .from('notifications')
+                            .update({ read_at: new Date().toISOString() })
+                            .eq('id', notification.id);
+                        if (updateError) {
+                            console.error("Could not mark notification as read:", updateError);
+                            markRead.disabled = false;
+                            status.textContent = "We couldn't update that notification. Please try again.";
+                            return;
+                        }
+                        markRead.remove();
+                    });
+                    card.append(markRead);
+                }
+                list.append(card);
+            });
+        }
+
+        loadNotifications();
+    </script>
+</body>
+</html>

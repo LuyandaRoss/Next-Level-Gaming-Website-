@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Level Gaming | Log In &amp; Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+    <div class="logo-text">
+        <span>NEXT LEVEL</span>
+        <span>GAMING & ESPORTS ARENA</span>
+    </div>
+    
+    <div class="nav-links">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="about.html" class="nav-link">ABOUT US</a>
+        <a href="experiences.html" class="nav-link">OVERVIEW</a>
+        <div class="nav-dropdown">
+            <a href="experiences.html" class="nav-link">EXPERIENCES</a>
+            <div class="nav-dropdown-menu">
+                <a href="pc-gaming.html">PC GAMING</a>
+                <a href="console-gaming.html">CONSOLE GAMING</a>
+                <a href="esports-arena.html">ESPORTS ARENA</a>
+                <a href="booking.html">CALCULATE FEES / BOOK</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="tournaments.html" class="nav-link">COMMUNITY</a>
+            <div class="nav-dropdown-menu">
+                <a href="tournaments.html">TOURNAMENTS</a>
+                <a href="membership.html">VIP MEMBERSHIP</a>
+                <a href="squad.html">SQUAD MANAGEMENT</a>
+                <a href="notifications.html">NOTIFICATIONS</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="profile.html" class="nav-link">ACCOUNT &amp; SUPPORT</a>
+            <div class="nav-dropdown-menu">
+                <a href="profile.html">PLAYER PROFILE</a>
+                <a href="login.html">LOG IN / SIGN UP</a>
+                <a href="checkout.html">PAYMENT</a>
+                <a href="checkout.html">CHECKOUT</a>
+                <a href="contact.html">CONTACT US</a>
+            </div>
+        </div>
+        <a href="booking.html" class="nav-book-btn">BOOK NOW</a>
+    </div>
+
+    <button class="menu-btn" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+    
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <h2>NAVIGATION</h2>
+            <button class="close-btn" onclick="toggleMenu()">✕</button>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">MAIN</div>
+            <a href="index.html" class="menu-link">HOME</a>
+            <a href="about.html" class="menu-link">ABOUT US</a>
+            <a href="experiences.html" class="menu-link">OVERVIEW</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">EXPERIENCES</div>
+            <a href="pc-gaming.html" class="menu-link">PC GAMING</a>
+            <a href="console-gaming.html" class="menu-link">CONSOLE GAMING</a>
+            <a href="esports-arena.html" class="menu-link">ESPORTS ARENA</a>
+            <a href="booking.html" class="menu-link red">CALCULATE FEES / BOOK</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">COMMUNITY</div>
+            <a href="tournaments.html" class="menu-link">TOURNAMENTS</a>
+            <a href="membership.html" class="menu-link">VIP MEMBERSHIP</a>
+            <a href="squad.html" class="menu-link">SQUAD MANAGEMENT</a>
+            <a href="notifications.html" class="menu-link">NOTIFICATIONS</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">ACCOUNT AND SUPPORT</div>
+            <a href="profile.html" class="menu-link">PLAYER PROFILE</a>
+            <a href="login.html" class="menu-link">LOG IN / SIGN UP</a>
+            <a href="checkout.html" class="menu-link">PAYMENT</a>
+            <a href="checkout.html" class="menu-link">CHECKOUT</a>
+            <a href="contact.html" class="menu-link">CONTACT US</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Active session notice (does NOT hide the form) -->
+        <div id="alreadyLoggedInCard" class="auth-banner signed-in" style="display: none; margin-bottom: 25px;">
+            <div>
+                ✓ You are currently signed in as <strong id="loggedInUserEmail"></strong>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <a id="continueBtn" href="profile.html" style="color: #fff; text-decoration: underline; font-weight: bold;">My Profile</a>
+                <button type="button" class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;" onclick="handleSignOut()">Sign Out</button>
+            </div>
+        </div>
+
+        <!-- Auth form container -->
+        <div id="authFormContainer">
+            <div class="login-title">NEXT LEVEL</div>
+            <div id="authSubtitle" class="login-subtitle">LOG IN TO YOUR ACCOUNT</div>
+
+            <!-- Tab switcher -->
+            <div class="auth-tabs">
+                <button type="button" class="auth-tab-btn active" id="tabLogin" onclick="switchAuthMode('login')">LOG IN</button>
+                <button type="button" class="auth-tab-btn" id="tabSignup" onclick="switchAuthMode('signup')">CREATE AN ACCOUNT</button>
+            </div>
+
+            <form id="authForm" onsubmit="event.preventDefault(); submitAuth();">
+                <div class="form-group" id="fullNameGroup" style="display: none;">
+                    <label>FULL NAME (FIRST &amp; SURNAME)</label>
+                    <input type="text" id="fullName" class="form-control" autocomplete="name" placeholder="e.g. Zeeno Ross">
+                </div>
+
+                <div class="form-group" id="phoneGroup" style="display: none;">
+                    <label>PHONE NUMBER (OPTIONAL)</label>
+                    <input type="tel" id="signupPhone" class="form-control" maxlength="15" autocomplete="tel" placeholder="0821234567">
+                </div>
+
+                <div class="form-group" id="emailGroup">
+                    <label>EMAIL ADDRESS</label>
+                    <input type="email" id="loginEmail" class="form-control" autocomplete="email" placeholder="name@example.com" required>
+                </div>
+
+                <div class="form-group" id="passwordGroup">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                        <label style="margin-bottom: 0;">PASSWORD</label>
+                        <a id="forgotPasswordLink" href="javascript:void(0)" onclick="switchAuthMode('forgot')" style="font-size: 0.75rem; color: #aaa; text-decoration: underline;">Forgot password?</a>
+                    </div>
+                    <input type="password" id="loginPassword" class="form-control" autocomplete="current-password" placeholder="At least 8 characters" minlength="8">
+                </div>
+
+                <button type="submit" id="mainAuthBtn" class="btn btn-primary" style="margin-top: 15px;">LOG IN</button>
+            </form>
+
+            <div style="text-align: center; margin-top: 15px;">
+                <button type="button" id="switchModeLink" class="btn btn-outline" style="font-size: 0.8rem; padding: 8px 16px;" onclick="toggleCurrentMode()">
+                    Need an account? Click to Sign Up
+                </button>
+            </div>
+
+            <div id="authMessage" class="login-note" role="status" aria-live="polite" style="margin-top: 20px; line-height: 1.6;">
+                Use your account credentials to access your bookings and quotations from any device.
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script>
+        function toggleMenu() {
+            document.getElementById("mobileMenu").classList.toggle("active");
+            document.body.style.overflow = document.getElementById("mobileMenu").classList.contains("active") ? "hidden" : "auto";
+        }
+
+        const currentPath = window.location.pathname.split("/").pop() || "index.html";
+        let foundCurrent = false;
+        document.querySelectorAll('.menu-link, .nav-link').forEach(link => {
+            if (link.getAttribute('href') === currentPath && !foundCurrent) {
+                foundCurrent = true;
+                link.classList.add('active');
+            }
+        });
+
+        let currentMode = 'login';
+        const urlParams = new URLSearchParams(window.location.search);
+        const nextUrl = urlParams.get('next');
+        const safeNext = (nextUrl && !nextUrl.startsWith('http') && !nextUrl.startsWith('//')) ? nextUrl : 'profile.html';
+
+        function switchAuthMode(mode) {
+            currentMode = mode;
+            const tabLogin = document.getElementById('tabLogin');
+            const tabSignup = document.getElementById('tabSignup');
+            const fullNameGroup = document.getElementById('fullNameGroup');
+            const phoneGroup = document.getElementById('phoneGroup');
+            const passwordGroup = document.getElementById('passwordGroup');
+            const authSubtitle = document.getElementById('authSubtitle');
+            const mainAuthBtn = document.getElementById('mainAuthBtn');
+            const switchModeLink = document.getElementById('switchModeLink');
+            const authMessage = document.getElementById('authMessage');
+            const loginPassword = document.getElementById('loginPassword');
+
+            authMessage.innerHTML = "Use your account credentials to access your bookings and quotations from any device.";
+
+            if (mode === 'signup') {
+                tabLogin.classList.remove('active');
+                tabSignup.classList.add('active');
+                fullNameGroup.style.display = 'block';
+                phoneGroup.style.display = 'block';
+                passwordGroup.style.display = 'block';
+                document.getElementById('fullName').required = true;
+                loginPassword.required = true;
+                authSubtitle.textContent = 'CREATE YOUR PLAYER ACCOUNT';
+                mainAuthBtn.textContent = 'CREATE ACCOUNT';
+                switchModeLink.style.display = 'inline-block';
+                switchModeLink.textContent = 'Already have an account? Click to Log In';
+            } else if (mode === 'login') {
+                tabSignup.classList.remove('active');
+                tabLogin.classList.add('active');
+                fullNameGroup.style.display = 'none';
+                phoneGroup.style.display = 'none';
+                passwordGroup.style.display = 'block';
+                document.getElementById('fullName').required = false;
+                loginPassword.required = true;
+                authSubtitle.textContent = 'WELCOME BACK';
+                mainAuthBtn.textContent = 'LOG IN';
+                switchModeLink.style.display = 'inline-block';
+                switchModeLink.textContent = "Don't have an account? Click to Sign Up";
+            } else if (mode === 'forgot') {
+                tabLogin.classList.remove('active');
+                tabSignup.classList.remove('active');
+                fullNameGroup.style.display = 'none';
+                phoneGroup.style.display = 'none';
+                passwordGroup.style.display = 'none';
+                loginPassword.required = false;
+                authSubtitle.textContent = 'RESET YOUR PASSWORD';
+                mainAuthBtn.textContent = 'SEND PASSWORD RESET LINK';
+                switchModeLink.style.display = 'inline-block';
+                switchModeLink.textContent = 'Back to Log In';
+                authMessage.innerHTML = "Enter your account email above. We'll send you a link to reset your password.";
+            }
+        }
+
+        function toggleCurrentMode() {
+            if (currentMode === 'forgot') {
+                switchAuthMode('login');
+            } else {
+                switchAuthMode(currentMode === 'login' ? 'signup' : 'login');
+            }
+        }
+
+        // Check if user is already signed in (displays banner without hiding form)
+        async function checkExistingSession() {
+            try {
+                const { data: { session } } = await window.supabaseClient.auth.getSession();
+                if (session && session.user) {
+                    const banner = document.getElementById('alreadyLoggedInCard');
+                    banner.style.display = 'flex';
+                    document.getElementById('loggedInUserEmail').textContent = session.user.email;
+                    
+                    if (nextUrl) {
+                        const continueBtn = document.getElementById('continueBtn');
+                        continueBtn.textContent = `Continue to ${nextUrl.replace('.html', '').toUpperCase()}`;
+                        continueBtn.href = safeNext;
+                    }
+                }
+            } catch (err) {
+                console.warn("Could not check active session:", err);
+            }
+        }
+
+        async function handleSignOut() {
+            try {
+                await window.supabaseClient.auth.signOut();
+            } catch (e) {
+                console.warn("Sign out err:", e);
+            }
+            document.getElementById('alreadyLoggedInCard').style.display = 'none';
+            document.getElementById('authMessage').innerHTML = "<span style='color:#a0ffa0;'>✓ You have signed out. You can now log in or register a new account below.</span>";
+        }
+
+        async function submitAuth() {
+            const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+            const password = document.getElementById('loginPassword').value.trim();
+            const fullName = document.getElementById('fullName').value.trim();
+            const phone = document.getElementById('signupPhone').value.trim();
+            const authMessage = document.getElementById('authMessage');
+            const mainAuthBtn = document.getElementById('mainAuthBtn');
+
+            if (!email) {
+                authMessage.innerHTML = "<span style='color:#ff6b6b;'>Please enter your email address.</span>";
+                return;
+            }
+
+            // Mode: Forgot Password
+            if (currentMode === 'forgot') {
+                mainAuthBtn.disabled = true;
+                authMessage.textContent = "Sending password reset link...";
+                try {
+                    const { error } = await window.supabaseClient.auth.resetPasswordForEmail(email, {
+                        redirectTo: window.location.origin + '/profile.html'
+                    });
+                    if (error) {
+                        authMessage.innerHTML = `<span style='color:#ff6b6b;'>Error: ${error.message}</span>`;
+                    } else {
+                        authMessage.innerHTML = `<span style='color:#a0ffa0;'>✓ Password reset link sent to <strong>${email}</strong>! Please check your inbox (and Spam/Junk folder).</span><br><br><a href='javascript:void(0)' onclick='switchAuthMode("login")' class='btn btn-outline' style='display:inline-block; font-size:0.8rem; padding:6px 14px;'>Back to Log In</a>`;
+                    }
+                } catch (err) {
+                    authMessage.innerHTML = "<span style='color:#ff6b6b;'>Could not reach the authentication service.</span>";
+                } finally {
+                    mainAuthBtn.disabled = false;
+                }
+                return;
+            }
+
+            if (!password) {
+                authMessage.innerHTML = "<span style='color:#ff6b6b;'>Please enter your password.</span>";
+                return;
+            }
+
+            if (currentMode === 'signup') {
+                if (!fullName) {
+                    authMessage.innerHTML = "<span style='color:#ff6b6b;'>Please enter your full name.</span>";
+                    return;
+                }
+                if (password.length < 8) {
+                    authMessage.innerHTML = "<span style='color:#ff6b6b;'>Your password must be at least 8 characters.</span>";
+                    return;
+                }
+            }
+
+            mainAuthBtn.disabled = true;
+            authMessage.textContent = currentMode === 'signup' ? "Creating your account..." : "Signing you in...";
+
+            try {
+                // If there is an existing session from a different account, sign out first to prevent session conflicts
+                const { data: { session: existingSession } } = await window.supabaseClient.auth.getSession();
+                if (existingSession && existingSession.user?.email?.toLowerCase() !== email) {
+                    await window.supabaseClient.auth.signOut();
+                }
+
+                let result;
+                if (currentMode === 'signup') {
+                    result = await window.supabaseClient.auth.signUp({
+                        email,
+                        password,
+                        options: {
+                            data: {
+                                full_name: fullName,
+                                phone: phone
+                            }
+                        }
+                    });
+                } else {
+                    result = await window.supabaseClient.auth.signInWithPassword({
+                        email,
+                        password
+                    });
+                }
+
+                if (result.error) {
+                    console.error("Supabase authentication failed:", result.error);
+                    const errMsg = result.error.message.toLowerCase();
+
+                    if (errMsg.includes("invalid login credentials")) {
+                        authMessage.innerHTML = `
+                            <div style="background: rgba(196, 0, 0, 0.2); border: 1px solid #c40000; border-radius: 6px; padding: 14px; text-align: left;">
+                                <strong style="color: #ff6b6b;">Invalid email or password.</strong><br>
+                                <span style="font-size: 0.85rem; color: #ddd;">
+                                    If you created this account earlier, your email may still be <strong>unconfirmed</strong> in Supabase.<br><br>
+                                    <strong>How to fix:</strong><br>
+                                    1. Go to your <a href="https://supabase.com/dashboard" target="_blank" rel="noopener" style="color: #ff9999; text-decoration: underline;">Supabase Dashboard</a> &rarr; <strong>Authentication</strong> &rarr; <strong>Users</strong>.<br>
+                                    2. Find your email and click the <strong>&hellip;</strong> menu &rarr; click <strong>"Confirm user"</strong>.<br>
+                                    3. Or click <a href="javascript:void(0)" onclick="switchAuthMode('forgot')" style="color: #ff9999; text-decoration: underline;">Forgot password</a> to reset it.
+                                </span>
+                            </div>
+                        `;
+                    } else if (errMsg.includes("already registered") || errMsg.includes("already exists")) {
+                        authMessage.innerHTML = `
+                            <div style="background: rgba(196, 0, 0, 0.2); border: 1px solid #c40000; border-radius: 6px; padding: 14px; text-align: left;">
+                                <strong style="color: #ff6b6b;">This email is already registered!</strong><br>
+                                <span style="font-size: 0.85rem; color: #ddd;">An account with this email address already exists. Please switch to the Log In tab to sign in.</span><br><br>
+                                <button type="button" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;" onclick="switchAuthMode('login')">SWITCH TO LOG IN</button>
+                            </div>
+                        `;
+                    } else if (errMsg.includes("email not confirmed")) {
+                        authMessage.innerHTML = `
+                            <div style="background: rgba(196, 0, 0, 0.2); border: 1px solid #c40000; border-radius: 6px; padding: 14px; text-align: left;">
+                                <strong style="color: #ff6b6b;">Email not confirmed.</strong><br>
+                                <span style="font-size: 0.85rem; color: #ddd;">In your Supabase Dashboard &rarr; <strong>Authentication</strong> &rarr; <strong>Users</strong>, find your user, click <strong>&hellip;</strong> and select <strong>Confirm user</strong>.</span>
+                            </div>
+                        `;
+                    } else if (errMsg.includes("rate limit")) {
+                        authMessage.innerHTML = `<span style="color:#ff6b6b;">Supabase email rate limit reached. Please wait a few minutes before trying again.</span>`;
+                    } else {
+                        authMessage.innerHTML = `<span style="color:#ff6b6b;">${result.error.message}</span>`;
+                    }
+                    return;
+                }
+
+                // If signup succeeded and returned a session (instant login via autoconfirm)
+                if (result.data && result.data.session) {
+                    // Update profile with name & phone
+                    if (currentMode === 'signup') {
+                        try {
+                            await window.supabaseClient.from('profiles').update({
+                                full_name: fullName,
+                                phone: phone,
+                                updated_at: new Date().toISOString()
+                            }).eq('id', result.data.session.user.id);
+                        } catch (pErr) {
+                            console.warn("Profile update error:", pErr);
+                        }
+                    }
+
+                    authMessage.innerHTML = "<span style='color:#a0ffa0;'>✓ Success! Signing you in and redirecting...</span>";
+                    setTimeout(() => {
+                        window.location.href = safeNext;
+                    }, 500);
+                    return;
+                }
+
+                // If signup succeeded but session is null (only happens if autoconfirm was not applied)
+                if (currentMode === 'signup' && result.data && result.data.user) {
+                    // Check if identities is empty (signifies duplicate account in some Supabase configurations)
+                    if (Array.isArray(result.data.user.identities) && result.data.user.identities.length === 0) {
+                        authMessage.innerHTML = `
+                            <div style="background: rgba(196, 0, 0, 0.2); border: 1px solid #c40000; border-radius: 6px; padding: 14px; text-align: left;">
+                                <strong style="color: #ff6b6b;">An account with this email already exists!</strong><br>
+                                <span style="font-size: 0.85rem; color: #ddd;">Please log in with your password or use the reset link if you forgot it.</span><br><br>
+                                <button type="button" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;" onclick="switchAuthMode('login')">SWITCH TO LOG IN</button>
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    authMessage.innerHTML = `
+                        <div style="background: rgba(0, 180, 70, 0.2); border: 1px solid #00b446; border-radius: 6px; padding: 14px; text-align: left;">
+                            <strong style="color: #a0ffa0;">Account Created!</strong><br>
+                            <span style="font-size: 0.85rem; color: #ddd;">Your account was registered. You can now log in with your password.</span><br><br>
+                            <button type="button" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;" onclick="switchAuthMode('login')">LOG IN NOW</button>
+                        </div>
+                    `;
+                }
+
+            } catch (error) {
+                console.error("Supabase authentication request failed:", error);
+                authMessage.innerHTML = "<span style='color:#ff6b6b;'>Could not connect to the account service. Please check your internet connection and try again.</span>";
+            } finally {
+                mainAuthBtn.disabled = false;
+            }
+        }
+
+        // Check active session on load
+        checkExistingSession();
+
+        // If URL requested mode=signup
+        if (urlParams.get('mode') === 'signup') {
+            switchAuthMode('signup');
+        }
+    </script>
+</body>
+</html>

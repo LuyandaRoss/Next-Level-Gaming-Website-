@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Level Gaming | VIP Membership</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+    <div class="logo-text">
+        <span>NEXT LEVEL</span>
+        <span>GAMING & ESPORTS ARENA</span>
+    </div>
+    
+    <div class="nav-links">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="about.html" class="nav-link">ABOUT US</a>
+        <a href="experiences.html" class="nav-link">OVERVIEW</a>
+        <div class="nav-dropdown">
+            <a href="experiences.html" class="nav-link">EXPERIENCES</a>
+            <div class="nav-dropdown-menu">
+                <a href="pc-gaming.html">PC GAMING</a>
+                <a href="console-gaming.html">CONSOLE GAMING</a>
+                <a href="esports-arena.html">ESPORTS ARENA</a>
+                <a href="booking.html">CALCULATE FEES / BOOK</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="tournaments.html" class="nav-link">COMMUNITY</a>
+            <div class="nav-dropdown-menu">
+                <a href="tournaments.html">TOURNAMENTS</a>
+                <a href="membership.html">VIP MEMBERSHIP</a>
+                <a href="squad.html">SQUAD MANAGEMENT</a>
+                <a href="notifications.html">NOTIFICATIONS</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="profile.html" class="nav-link">ACCOUNT &amp; SUPPORT</a>
+            <div class="nav-dropdown-menu">
+                <a href="profile.html">PLAYER PROFILE</a>
+                <a href="login.html">LOG IN / SIGN UP</a>
+                <a href="checkout.html">PAYMENT</a>
+                <a href="checkout.html">CHECKOUT</a>
+                <a href="contact.html">CONTACT US</a>
+            </div>
+        </div>
+        <a href="booking.html" class="nav-book-btn">BOOK NOW</a>
+    </div>
+
+    <button class="menu-btn" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <h2>NAVIGATION</h2>
+            <button class="close-btn" onclick="toggleMenu()">✕</button>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">MAIN</div>
+            <a href="index.html" class="menu-link">HOME</a>
+            <a href="about.html" class="menu-link">ABOUT US</a>
+            <a href="experiences.html" class="menu-link">OVERVIEW</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">EXPERIENCES</div>
+            <a href="pc-gaming.html" class="menu-link">PC GAMING</a>
+            <a href="console-gaming.html" class="menu-link">CONSOLE GAMING</a>
+            <a href="esports-arena.html" class="menu-link">ESPORTS ARENA</a>
+            <a href="booking.html" class="menu-link red">CALCULATE FEES / BOOK</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">COMMUNITY</div>
+            <a href="tournaments.html" class="menu-link">TOURNAMENTS</a>
+            <a href="membership.html" class="menu-link">VIP MEMBERSHIP</a>
+            <a href="squad.html" class="menu-link">SQUAD MANAGEMENT</a>
+            <a href="notifications.html" class="menu-link">NOTIFICATIONS</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">ACCOUNT AND SUPPORT</div>
+            <a href="profile.html" class="menu-link">PLAYER PROFILE</a>
+            <a href="login.html" class="menu-link">LOG IN / SIGN UP</a>
+            <a href="checkout.html" class="menu-link">PAYMENT</a>
+            <a href="checkout.html" class="menu-link">CHECKOUT</a>
+            <a href="contact.html" class="menu-link">CONTACT US</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-title">
+            <h2>VIP MEMBERSHIP</h2>
+            <p>Choose your membership and continue to the in-app checkout.</p>
+        </div>
+
+        <div class="vip-card">
+            <div class="vip-header bronze">
+                <div class="vip-header-top">
+                    <div class="vip-brand">NLG</div>
+                    <div class="vip-tier">BRONZE</div>
+                </div>
+                <div class="vip-header-bottom">
+                    <h3>NEXT LEVEL GAMING</h3>
+                    <p>MEMBERSHIP CARD</p>
+                </div>
+            </div>
+            <h4 class="vip-title">Bronze Pass</h4>
+            <div class="vip-price">R99 <span>/ month</span></div>
+            <ul class="vip-list">
+                <li>10% off all hourly rates</li>
+                <li>Free energy drink on Fridays</li>
+                <li>Priority booking (24 hours early)</li>
+                <li>Access to member-only Discord</li>
+            </ul>
+            <a href="javascript:void(0);" onclick="selectMembership('Bronze Pass Membership', '99.00', 'Monthly')" class="btn btn-grey">JOIN BRONZE</a>
+        </div>
+
+        <div class="vip-card popular">
+            <div class="popular-badge">POPULAR</div>
+            <div class="vip-header gold">
+                <div class="vip-header-top">
+                    <div class="vip-brand">NLG</div>
+                    <div class="vip-tier">GOLD</div>
+                </div>
+                <div class="vip-header-bottom">
+                    <h3>NEXT LEVEL GAMING</h3>
+                    <p>MEMBERSHIP CARD</p>
+                </div>
+            </div>
+            <h4 class="vip-title">Gold Pass</h4>
+            <div class="vip-price">R199 <span>/ month</span></div>
+            <ul class="vip-list">
+                <li>20% off all hourly rates</li>
+                <li>Free snack combo every visit</li>
+                <li>Access to VIP Lounge</li>
+                <li>Free entry to weekly tournaments</li>
+                <li>1 hour free gaming per month</li>
+            </ul>
+            <a href="javascript:void(0);" onclick="selectMembership('Gold Pass Membership', '199.00', 'Monthly')" class="btn btn-primary">JOIN GOLD</a>
+        </div>
+
+        <div class="vip-card">
+            <div class="vip-header platinum">
+                <div class="vip-header-top">
+                    <div class="vip-brand">NLG</div>
+                    <div class="vip-tier">PLATINUM</div>
+                </div>
+                <div class="vip-header-bottom">
+                    <h3>NEXT LEVEL GAMING</h3>
+                    <p>MEMBERSHIP CARD</p>
+                </div>
+            </div>
+            <h4 class="vip-title">Platinum Pass</h4>
+            <div class="vip-price">R399 <span>/ month</span></div>
+            <ul class="vip-list">
+                <li>Unlimited casual gaming (off-peak)</li>
+                <li>Free entry to all tournaments</li>
+                <li>Exclusive Next Level merch drop</li>
+                <li>Dedicated locker and private headset</li>
+                <li>2 hours free gaming per month</li>
+            </ul>
+            <a href="javascript:void(0);" onclick="selectMembership('Platinum Pass Membership', '399.00', 'Monthly')" class="btn btn-grey">JOIN PLATINUM</a>
+        </div>
+
+        <h3 style="color: #888; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin: 30px 0 15px;">MEMBER BENEFITS</h3>
+        <div class="card" style="padding: 20px 20px 5px;">
+            <ul class="exp-list" style="margin-bottom: 15px;">
+                <li style="margin-bottom: 15px;"><strong style="color: #fff;">Priority Booking:</strong> VIP members can book their favorite stations up to 7 days in advance.</li>
+                <li style="margin-bottom: 15px;"><strong style="color: #fff;">Discounted Snacks:</strong> 15% off the entire cafeteria menu for Gold and Platinum members.</li>
+                <li style="margin-bottom: 15px;"><strong style="color: #fff;">Tournament Seeding:</strong> Platinum members receive priority seeding in official Next Level tournaments.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+   <script>
+    function toggleMenu() {
+        document.getElementById("mobileMenu").classList.toggle("active");
+        document.body.style.overflow = document.getElementById("mobileMenu").classList.contains("active") ? "hidden" : "auto";
+    }
+
+    const currentPath = window.location.pathname.split("/").pop() || "index.html";
+    let foundCurrent = false;
+   document.querySelectorAll('.menu-link, .nav-link').forEach(link => {
+    if (link.getAttribute('href') === currentPath && !foundCurrent) {
+        foundCurrent = true;
+        link.classList.add('active');
+    }
+});
+
+    function selectMembership(name, price, period) {
+        localStorage.setItem('orderItem', name);
+        localStorage.setItem('orderPrice', price);
+        localStorage.setItem('orderPeriod', period);
+        localStorage.removeItem('totalAmount');
+        window.location.href = 'checkout.html';
+    }
+</script>
+</body>
+</html>

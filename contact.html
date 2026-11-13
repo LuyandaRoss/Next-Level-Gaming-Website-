@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Level Gaming | Contact Us</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+    <div class="logo-text">
+        <span>NEXT LEVEL</span>
+        <span>GAMING & ESPORTS ARENA</span>
+    </div>
+    
+    <div class="nav-links">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="about.html" class="nav-link">ABOUT US</a>
+        <a href="experiences.html" class="nav-link">OVERVIEW</a>
+        <div class="nav-dropdown">
+            <a href="experiences.html" class="nav-link">EXPERIENCES</a>
+            <div class="nav-dropdown-menu">
+                <a href="pc-gaming.html">PC GAMING</a>
+                <a href="console-gaming.html">CONSOLE GAMING</a>
+                <a href="esports-arena.html">ESPORTS ARENA</a>
+                <a href="booking.html">CALCULATE FEES / BOOK</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="tournaments.html" class="nav-link">COMMUNITY</a>
+            <div class="nav-dropdown-menu">
+                <a href="tournaments.html">TOURNAMENTS</a>
+                <a href="membership.html">VIP MEMBERSHIP</a>
+                <a href="squad.html">SQUAD MANAGEMENT</a>
+                <a href="notifications.html">NOTIFICATIONS</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="profile.html" class="nav-link">ACCOUNT &amp; SUPPORT</a>
+            <div class="nav-dropdown-menu">
+                <a href="profile.html">PLAYER PROFILE</a>
+                <a href="login.html">LOG IN / SIGN UP</a>
+                <a href="checkout.html">PAYMENT</a>
+                <a href="checkout.html">CHECKOUT</a>
+                <a href="contact.html">CONTACT US</a>
+            </div>
+        </div>
+        <a href="booking.html" class="nav-book-btn">BOOK NOW</a>
+    </div>
+
+    <button class="menu-btn" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <h2>NAVIGATION</h2>
+            <button class="close-btn" onclick="toggleMenu()">✕</button>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">MAIN</div>
+            <a href="index.html" class="menu-link">HOME</a>
+            <a href="about.html" class="menu-link">ABOUT US</a>
+            <a href="experiences.html" class="menu-link">OVERVIEW</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">EXPERIENCES</div>
+            <a href="pc-gaming.html" class="menu-link">PC GAMING</a>
+            <a href="console-gaming.html" class="menu-link">CONSOLE GAMING</a>
+            <a href="esports-arena.html" class="menu-link">ESPORTS ARENA</a>
+            <a href="booking.html" class="menu-link red">CALCULATE FEES / BOOK</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">COMMUNITY</div>
+            <a href="tournaments.html" class="menu-link">TOURNAMENTS</a>
+            <a href="membership.html" class="menu-link">VIP MEMBERSHIP</a>
+            <a href="squad.html" class="menu-link">SQUAD MANAGEMENT</a>
+            <a href="notifications.html" class="menu-link">NOTIFICATIONS</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">ACCOUNT AND SUPPORT</div>
+            <a href="profile.html" class="menu-link">PLAYER PROFILE</a>
+            <a href="login.html" class="menu-link">LOG IN / SIGN UP</a>
+            <a href="checkout.html" class="menu-link">PAYMENT</a>
+            <a href="checkout.html" class="menu-link">CHECKOUT</a>
+            <a href="contact.html" class="menu-link">CONTACT US</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-title">
+            <h2>CONTACT US</h2>
+            <p>Get in touch with the arena</p>
+        </div>
+
+        <div class="venue-card">
+            <h4>VENUE DETAILS</h4>
+            <p>154 Rivonia Road, Sandton, Johannesburg, South Africa</p>
+            <p>Phone: +27 (0)11 987 6543</p>
+            <p>Email: info@nextlevelgaming.co.za</p>
+            <p>Socials: @NextLevelArena_ZA</p>
+        </div>
+
+        <iframe
+            class="map-placeholder"
+            title="Map showing the venue at 154 Rivonia Road, Sandton, Johannesburg"
+            src="https://maps.google.com/maps?q=154%20Rivonia%20Road%2C%20Sandton%2C%20Johannesburg%2C%20South%20Africa&amp;z=15&amp;output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        <a class="btn btn-outline" style="margin-bottom: 30px;" href="https://www.google.com/maps/search/?api=1&amp;query=154%20Rivonia%20Road%2C%20Sandton%2C%20Johannesburg%2C%20South%20Africa" target="_blank" rel="noopener noreferrer">OPEN VENUE IN MAPS</a>
+
+        <h3 style="font-size: 0.8rem; text-transform: uppercase; font-weight: bold; letter-spacing: 1px; margin-bottom: 15px;">CONTACT FORM</h3>
+        
+        <form class="form-iframe-placeholder" id="contactForm">
+            <h2>Contact Us</h2>
+            <span class="required">* Indicates required question</span>
+            
+            <div class="iframe-input-group">
+                <label for="contactName">Name *</label>
+                <input id="contactName" name="name" type="text" maxlength="100" placeholder="Your answer" required>
+            </div>
+            <div class="iframe-input-group">
+                <label for="contactSurname">Surname *</label>
+                <input id="contactSurname" name="surname" type="text" maxlength="100" placeholder="Your answer" required>
+            </div>
+            <div class="iframe-input-group">
+                <label for="contactPhone">Phone Number *</label>
+                <input id="contactPhone" name="phone" type="tel" maxlength="30" placeholder="Your answer" required>
+            </div>
+            <div class="iframe-input-group">
+                <label for="contactEmail">Email *</label>
+                <input id="contactEmail" name="email" type="email" maxlength="254" placeholder="Your answer" required>
+            </div>
+            <div class="iframe-input-group">
+                <label for="contactMessage">Message *</label>
+                <textarea id="contactMessage" name="message" maxlength="5000" placeholder="Your message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" id="contactSubmit">SEND MESSAGE</button>
+            <p id="contactStatus" class="login-note" role="status" aria-live="polite"></p>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="emailjs-config.js"></script>
+    <script>
+    function toggleMenu() {
+        document.getElementById("mobileMenu").classList.toggle("active");
+        document.body.style.overflow = document.getElementById("mobileMenu").classList.contains("active") ? "hidden" : "auto";
+    }
+
+    const currentPath = window.location.pathname.split("/").pop() || "index.html";
+    let foundCurrent = false;
+    
+   document.querySelectorAll('.menu-link, .nav-link').forEach(link => {
+    if (link.getAttribute('href') === currentPath && !foundCurrent) {
+        foundCurrent = true;
+        link.classList.add('active');
+    }
+});
+
+    document.getElementById('contactForm').addEventListener('submit', async event => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        const status = document.getElementById('contactStatus');
+        const submit = document.getElementById('contactSubmit');
+        const { data: { session }, error: authError } = await window.supabaseClient.auth.getSession();
+        const user = session ? session.user : null;
+        if (authError) {
+            console.error("Could not verify the current Supabase user:", authError);
+            status.textContent = "We couldn't verify your account. Please try again.";
+            return;
+        }
+
+        submit.disabled = true;
+        status.textContent = "Sending your message...";
+        const { error } = await window.supabaseClient.from('contact_messages').insert({
+            user_id: user?.id || null,
+            name: form.elements.namedItem('name').value.trim(),
+            surname: form.elements.namedItem('surname').value.trim(),
+            phone: form.elements.namedItem('phone').value.trim(),
+            email: form.elements.namedItem('email').value.trim(),
+            message: form.elements.namedItem('message').value.trim()
+        });
+
+        if (error) {
+            console.error("Could not save contact message:", error);
+            status.textContent = "We couldn't send your message. Please try again.";
+            submit.disabled = false;
+            return;
+        }
+
+        // Send copy via EmailJS if configured
+        if (window.emailjs && typeof EMAILJS_CONFIG !== 'undefined' && EMAILJS_CONFIG.publicKey && EMAILJS_CONFIG.publicKey !== 'YOUR_EMAILJS_PUBLIC_KEY' && EMAILJS_CONFIG.contactTemplateId) {
+            try {
+                await emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.contactTemplateId, {
+                    from_name: `${form.elements.namedItem('name').value.trim()} ${form.elements.namedItem('surname').value.trim()}`,
+                    from_email: form.elements.namedItem('email').value.trim(),
+                    phone: form.elements.namedItem('phone').value.trim(),
+                    message: form.elements.namedItem('message').value.trim(),
+                    to_email: 'rossluyanda717@gmail.com'
+                });
+            } catch (eErr) {
+                console.warn("EmailJS contact notification error:", eErr);
+            }
+        }
+
+        form.reset();
+        status.textContent = "Thanks! Your message has been sent.";
+        submit.disabled = false;
+    });
+
+    let baseRate = 80;
+
+    function selectExp(element) {
+        document.querySelectorAll('.exp-btn').forEach(btn => btn.classList.remove('active'));
+        element.classList.add('active');
+        baseRate = parseInt(element.getAttribute('data-rate'));
+        calculateTotal();
+    }
+
+    function updateStep(id, change) {
+        const input = document.getElementById(id);
+        if (!input) return;
+        let val = parseInt(input.value);
+        const min = parseInt(input.getAttribute('min'));
+        const max = parseInt(input.getAttribute('max'));
+        
+        val += change;
+        if (val >= min && val <= max) {
+            input.value = val;
+            calculateTotal();
+        }
+    }
+
+    function calculateTotal() {
+        const playersInput = document.getElementById('players');
+        if (!playersInput) return;
+
+        const players = parseInt(playersInput.value);
+        const hours = parseInt(document.getElementById('hours').value);
+        
+        let subtotal = baseRate * players * hours;
+
+        document.querySelectorAll('.extra-checkbox').forEach(box => {
+            if (box.checked) {
+                subtotal += (parseInt(box.getAttribute('data-price')) * players);
+            }
+        });
+
+        const vat = subtotal * 0.15;
+        const total = subtotal + vat;
+
+        document.getElementById('subtotalDisplay').innerText = 'R ' + subtotal.toFixed(2);
+        document.getElementById('vatDisplay').innerText = 'R ' + vat.toFixed(2);
+        document.getElementById('totalDisplay').innerText = 'R ' + total.toFixed(2);
+        
+        localStorage.setItem('totalAmount', total.toFixed(2));
+    }
+
+    function validateForm() {
+        const fName = document.getElementById('firstName');
+        if (!fName) return true;
+        
+        if (!fName.value.trim() || !document.getElementById('surname').value.trim() || !document.getElementById('email').value.trim() || !document.getElementById('phone').value.trim()) {
+            alert("Please fill in all Customer Information fields before continuing.");
+            return false; 
+        }
+        return true; 
+    }
+
+    function resetForm() {
+        if (!document.getElementById('firstName')) return;
+        
+        document.getElementById('firstName').value = '';
+        document.getElementById('surname').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('phone').value = '';
+        
+        document.getElementById('players').value = 1;
+        document.getElementById('hours').value = 1;
+        
+        document.querySelectorAll('.extra-checkbox').forEach(box => box.checked = false);
+        document.querySelectorAll('.exp-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector('.exp-btn').classList.add('active');
+        baseRate = 80;
+        
+        calculateTotal();
+    }
+
+    if (document.getElementById('expiryInput')) {
+        const savedTotal = localStorage.getItem('totalAmount');
+        if (savedTotal) {
+            document.getElementById('finalAmount').innerText = 'R ' + savedTotal;
+            const payBtn = document.getElementById('payBtn');
+            if (payBtn) {
+                payBtn.innerText = 'PAY R ' + savedTotal;
+                payBtn.style.backgroundColor = '#b30000';
+                payBtn.style.color = '#fff';
+                payBtn.classList.remove('btn-grey');
+            }
+        }
+
+        const payBtns = document.querySelectorAll('.pay-btn');
+        payBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                payBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        const expiryInput = document.getElementById('expiryInput');
+        
+        expiryInput.addEventListener('input', function(e) {
+            let val = e.target.value.replace(/\D/g, ''); 
+            if (val.length > 4) val = val.slice(0, 4);
+            
+            if (val.length >= 3) {
+                val = val.slice(0, 2) + '/' + val.slice(2);
+            }
+            e.target.value = val;
+        });
+
+        expiryInput.addEventListener('blur', function(e) {
+            const val = e.target.value;
+            if (!val || val.length < 5) {
+                e.target.value = "";
+                return;
+            }
+            
+            const month = parseInt(val.split('/')[0]);
+            const year = parseInt(val.split('/')[1]);
+            
+            if (month < 1 || month > 12) {
+                alert("Invalid month. Please use MM/YY format.");
+                e.target.value = "";
+                return;
+            }
+            
+            const now = new Date();
+            const currentMonth = now.getMonth() + 1; 
+            const currentYear = now.getFullYear() % 100;
+            
+            if (year < currentYear || (year === currentYear && month < currentMonth)) {
+                alert("The expiry date cannot be in the past.");
+                e.target.value = "";
+            }
+        });
+    }
+</script>
+</body>
+</html>

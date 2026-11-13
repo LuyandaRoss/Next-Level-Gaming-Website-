@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Level Gaming | Player Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+    <div class="logo-text">
+        <span>NEXT LEVEL</span>
+        <span>GAMING & ESPORTS ARENA</span>
+    </div>
+    
+    <div class="nav-links">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="about.html" class="nav-link">ABOUT US</a>
+        <a href="experiences.html" class="nav-link">OVERVIEW</a>
+        <div class="nav-dropdown">
+            <a href="experiences.html" class="nav-link">EXPERIENCES</a>
+            <div class="nav-dropdown-menu">
+                <a href="pc-gaming.html">PC GAMING</a>
+                <a href="console-gaming.html">CONSOLE GAMING</a>
+                <a href="esports-arena.html">ESPORTS ARENA</a>
+                <a href="booking.html">CALCULATE FEES / BOOK</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="tournaments.html" class="nav-link">COMMUNITY</a>
+            <div class="nav-dropdown-menu">
+                <a href="tournaments.html">TOURNAMENTS</a>
+                <a href="membership.html">VIP MEMBERSHIP</a>
+                <a href="squad.html">SQUAD MANAGEMENT</a>
+                <a href="notifications.html">NOTIFICATIONS</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="profile.html" class="nav-link">ACCOUNT &amp; SUPPORT</a>
+            <div class="nav-dropdown-menu">
+                <a href="profile.html">PLAYER PROFILE</a>
+                <a href="login.html">LOG IN / SIGN UP</a>
+                <a href="checkout.html">PAYMENT</a>
+                <a href="checkout.html">CHECKOUT</a>
+                <a href="contact.html">CONTACT US</a>
+            </div>
+        </div>
+        <a href="booking.html" class="nav-book-btn">BOOK NOW</a>
+    </div>
+
+    <button class="menu-btn" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+    
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <h2>NAVIGATION</h2>
+            <button class="close-btn" onclick="toggleMenu()">✕</button>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">MAIN</div>
+            <a href="index.html" class="menu-link">HOME</a>
+            <a href="about.html" class="menu-link">ABOUT US</a>
+            <a href="experiences.html" class="menu-link">OVERVIEW</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">EXPERIENCES</div>
+            <a href="pc-gaming.html" class="menu-link">PC GAMING</a>
+            <a href="console-gaming.html" class="menu-link">CONSOLE GAMING</a>
+            <a href="esports-arena.html" class="menu-link">ESPORTS ARENA</a>
+            <a href="booking.html" class="menu-link red">CALCULATE FEES / BOOK</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">COMMUNITY</div>
+            <a href="tournaments.html" class="menu-link">TOURNAMENTS</a>
+            <a href="membership.html" class="menu-link">VIP MEMBERSHIP</a>
+            <a href="squad.html" class="menu-link">SQUAD MANAGEMENT</a>
+            <a href="notifications.html" class="menu-link">NOTIFICATIONS</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">ACCOUNT AND SUPPORT</div>
+            <a href="profile.html" class="menu-link">PLAYER PROFILE</a>
+            <a href="login.html" class="menu-link">LOG IN / SIGN UP</a>
+            <a href="checkout.html" class="menu-link">PAYMENT</a>
+            <a href="checkout.html" class="menu-link">CHECKOUT</a>
+            <a href="contact.html" class="menu-link">CONTACT US</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-title">
+            <h2>PLAYER PROFILE</h2>
+            <p>Your central gaming account across all devices</p>
+        </div>
+
+        <div class="card" id="profileCard">
+            <h3 id="profileName" style="font-size: 1.4rem; margin-bottom: 8px;">Loading account...</h3>
+            <p id="profileEmail" style="color: #bbb; font-size: 0.95rem; margin-bottom: 6px;"></p>
+            <p id="profilePhone" style="color: #888; font-size: 0.9rem; margin-bottom: 20px;"></p>
+
+            <div id="profileActionBtns" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <a id="authActionLink" href="login.html" class="btn btn-primary" style="margin: 0;">LOG IN OR SIGN UP</a>
+                <a href="booking.html" class="btn btn-outline" style="margin: 0;">CALCULATE FEES / BOOK</a>
+                <button id="toggleEditBtn" class="btn btn-outline" style="display: none; margin: 0;" onclick="toggleEditProfile()">EDIT PROFILE</button>
+                <button id="signOutButton" class="btn btn-grey" style="display: none; margin: 0;" onclick="signOut()">SIGN OUT</button>
+            </div>
+
+            <!-- Profile Edit Box -->
+            <div id="profileEditBox" class="profile-edit-box" style="display: none;">
+                <h4 style="font-size: 1rem; color: #fff; margin-bottom: 12px; text-transform: uppercase;">Update Personal Details</h4>
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <label style="font-size: 0.75rem;">FULL NAME</label>
+                    <input type="text" id="editFullName" class="form-control" placeholder="Your full name">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label style="font-size: 0.75rem;">PHONE NUMBER</label>
+                    <input type="tel" id="editPhone" class="form-control" maxlength="15" placeholder="0821234567">
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button id="saveProfileBtn" class="btn btn-primary" style="margin: 0; padding: 10px 20px;" onclick="saveProfileDetails()">SAVE CHANGES</button>
+                    <button class="btn btn-outline" style="margin: 0; padding: 10px 20px;" onclick="toggleEditProfile()">CANCEL</button>
+                </div>
+                <p id="editStatusMessage" class="login-note" role="status" aria-live="polite" style="margin-top: 10px;"></p>
+            </div>
+
+            <p id="profileStatus" class="login-note" role="status" aria-live="polite" style="margin-top: 15px;"></p>
+        </div>
+
+        <div id="accountActivity" style="display: none;">
+            <div class="section-title" style="margin-top: 40px;">
+                <h2>YOUR BOOKINGS &amp; QUOTATIONS</h2>
+            </div>
+            <div id="bookingList"></div>
+
+            <div class="section-title" style="margin-top: 40px;">
+                <h2>YOUR MEMBERSHIPS</h2>
+            </div>
+            <div id="membershipList"></div>
+
+            <div class="section-title" style="margin-top: 40px;">
+                <h2>YOUR ORDERS</h2>
+            </div>
+            <div id="orderList"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script>
+        function toggleMenu() {
+            document.getElementById("mobileMenu").classList.toggle("active");
+            document.body.style.overflow = document.getElementById("mobileMenu").classList.contains("active") ? "hidden" : "auto";
+        }
+
+        const currentPath = window.location.pathname.split("/").pop() || "index.html";
+        let foundCurrent = false;
+        document.querySelectorAll('.menu-link, .nav-link').forEach(link => {
+            if (link.getAttribute('href') === currentPath && !foundCurrent) {
+                foundCurrent = true;
+                link.classList.add('active');
+            }
+        });
+
+        let currentUser = null;
+
+        function appendActivity(container, title, detail, status, date, activityType) {
+            const card = document.createElement('div');
+            card.className = 'card account-entry';
+            const heading = document.createElement('h3');
+            heading.textContent = title;
+            const description = document.createElement('p');
+            description.textContent = detail;
+            const meta = document.createElement('p');
+            meta.className = 'account-entry-meta';
+            const statusText = status === 'pending'
+                ? {
+                    booking: 'QUOTE REQUEST PENDING · NO PAYMENT TAKEN',
+                    order: 'ORDER RECORDED · PAYMENT NOT PROCESSED',
+                    membership: 'MEMBERSHIP PENDING · NO PAYMENT TAKEN'
+                }[activityType]
+                : status.toUpperCase();
+            meta.textContent = `${statusText || status.toUpperCase()} · ${new Date(date).toLocaleString()}`;
+            card.append(heading, description, meta);
+            container.append(card);
+        }
+
+        async function loadProfile() {
+            const status = document.getElementById('profileStatus');
+            const { data: { session }, error: authError } = await window.supabaseClient.auth.getSession();
+            const user = session ? session.user : null;
+            currentUser = user;
+
+            if (authError) {
+                console.error("Could not verify Supabase session:", authError);
+                document.getElementById('profileName').textContent = "Unable to load account";
+                status.textContent = "Please refresh the page and try again.";
+                return;
+            }
+
+            if (!user) {
+                document.getElementById('profileName').textContent = "Sign in to your account";
+                document.getElementById('profileEmail').textContent = "Sign in or create an account to view and manage your bookings from any device.";
+                document.getElementById('profilePhone').textContent = "";
+                document.getElementById('authActionLink').style.display = 'inline-block';
+                document.getElementById('authActionLink').href = "login.html?next=profile.html";
+                return;
+            }
+
+            const confirmationCallback = new URLSearchParams(window.location.search).has('code')
+                || new URLSearchParams(window.location.hash.slice(1)).has('access_token');
+            if (confirmationCallback) {
+                status.textContent = "Email confirmed. Your account is active.";
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+
+            // Fetch profile data
+            const { data: profile, error: profileError } = await window.supabaseClient
+                .from('profiles')
+                .select('full_name, phone')
+                .eq('id', user.id)
+                .maybeSingle();
+
+            if (profileError) {
+                console.warn("Could not load profile:", profileError);
+            }
+
+            const fullName = profile?.full_name || user.user_metadata?.full_name || "Valued Gamer";
+            const phone = profile?.phone || user.user_metadata?.phone || "";
+
+            document.getElementById('profileName').textContent = fullName;
+            document.getElementById('profileEmail').textContent = `Email: ${user.email}`;
+            document.getElementById('profilePhone').textContent = phone ? `Phone: ${phone}` : "Phone: Not provided (Click Edit Profile to add)";
+
+            // Update edit form values
+            document.getElementById('editFullName').value = fullName;
+            document.getElementById('editPhone').value = phone;
+
+            // Show user control buttons
+            document.getElementById('authActionLink').style.display = 'none';
+            document.getElementById('toggleEditBtn').style.display = 'inline-block';
+            document.getElementById('signOutButton').style.display = 'inline-block';
+            document.getElementById('accountActivity').style.display = 'block';
+
+            // Load bookings, orders, memberships in parallel
+            const [bookingsResult, ordersResult, membershipsResult] = await Promise.all([
+                window.supabaseClient.from('bookings')
+                    .select('id, experience, players, hours, total, status, created_at')
+                    .eq('user_id', user.id)
+                    .order('created_at', { ascending: false })
+                    .limit(20),
+                window.supabaseClient.from('checkout_orders')
+                    .select('id, item, amount, status, created_at')
+                    .eq('user_id', user.id)
+                    .order('created_at', { ascending: false })
+                    .limit(20),
+                window.supabaseClient.from('membership_subscriptions')
+                    .select('tier, price, billing_period, status, created_at')
+                    .eq('user_id', user.id)
+                    .order('created_at', { ascending: false })
+                    .limit(20)
+            ]);
+
+            const bookingList = document.getElementById('bookingList');
+            bookingList.innerHTML = '';
+            if (bookingsResult.error) {
+                console.error("Could not load bookings:", bookingsResult.error);
+                bookingList.textContent = "Bookings could not be loaded.";
+            } else if (!bookingsResult.data.length) {
+                bookingList.innerHTML = '<p style="color:#777;">No bookings recorded yet. <a href="booking.html" style="color:#ff4d4d;">Create your first booking quotation</a>.</p>';
+            } else {
+                bookingsResult.data.forEach(booking => appendActivity(
+                    bookingList,
+                    `${booking.experience} · ${booking.players} player(s) · ${booking.hours} hour(s)`,
+                    `Quotation: R ${Number(booking.total).toFixed(2)} (Ref: #${booking.id.slice(0, 8)})`,
+                    booking.status,
+                    booking.created_at,
+                    'booking'
+                ));
+            }
+
+            const membershipList = document.getElementById('membershipList');
+            membershipList.innerHTML = '';
+            if (membershipsResult.error) {
+                console.error("Could not load memberships:", membershipsResult.error);
+                membershipList.textContent = "Memberships could not be loaded.";
+            } else if (!membershipsResult.data.length) {
+                membershipList.innerHTML = '<p style="color:#777;">No active VIP memberships. <a href="membership.html" style="color:#ff4d4d;">Explore VIP Memberships</a>.</p>';
+            } else {
+                membershipsResult.data.forEach(membership => appendActivity(
+                    membershipList,
+                    membership.tier,
+                    `R ${Number(membership.price).toFixed(2)} / ${membership.billing_period.toLowerCase()}`,
+                    membership.status,
+                    membership.created_at,
+                    'membership'
+                ));
+            }
+
+            const orderList = document.getElementById('orderList');
+            orderList.innerHTML = '';
+            if (ordersResult.error) {
+                console.error("Could not load orders:", ordersResult.error);
+                orderList.textContent = "Orders could not be loaded.";
+            } else if (!ordersResult.data.length) {
+                orderList.innerHTML = '<p style="color:#777;">No checkout orders placed yet.</p>';
+            } else {
+                ordersResult.data.forEach(order => appendActivity(
+                    orderList,
+                    order.item,
+                    `Amount: R ${Number(order.amount).toFixed(2)}`,
+                    order.status,
+                    order.created_at,
+                    'order'
+                ));
+            }
+        }
+
+        function toggleEditProfile() {
+            const editBox = document.getElementById('profileEditBox');
+            editBox.style.display = editBox.style.display === 'none' ? 'block' : 'none';
+            document.getElementById('editStatusMessage').textContent = '';
+        }
+
+        async function saveProfileDetails() {
+            if (!currentUser) return;
+            const newName = document.getElementById('editFullName').value.trim();
+            const newPhone = document.getElementById('editPhone').value.trim();
+            const saveBtn = document.getElementById('saveProfileBtn');
+            const statusMsg = document.getElementById('editStatusMessage');
+
+            if (!newName) {
+                statusMsg.textContent = "Please enter your name.";
+                return;
+            }
+
+            saveBtn.disabled = true;
+            statusMsg.textContent = "Saving changes to Supabase...";
+
+            try {
+                const { error } = await window.supabaseClient
+                    .from('profiles')
+                    .update({
+                        full_name: newName,
+                        phone: newPhone,
+                        updated_at: new Date().toISOString()
+                    })
+                    .eq('id', currentUser.id);
+
+                if (error) {
+                    console.error("Could not update profile:", error);
+                    statusMsg.textContent = "Error saving profile: " + error.message;
+                    return;
+                }
+
+                statusMsg.textContent = "Profile updated successfully!";
+                document.getElementById('profileName').textContent = newName;
+                document.getElementById('profilePhone').textContent = newPhone ? `Phone: ${newPhone}` : "Phone: Not provided";
+                setTimeout(() => {
+                    toggleEditProfile();
+                }, 1200);
+            } catch (err) {
+                console.error("Update request failed:", err);
+                statusMsg.textContent = "Could not reach account service.";
+            } finally {
+                saveBtn.disabled = false;
+            }
+        }
+
+        async function signOut() {
+            const { error } = await window.supabaseClient.auth.signOut();
+            if (error) {
+                console.error("Could not sign out:", error);
+                document.getElementById('profileStatus').textContent = "We couldn't sign you out. Please try again.";
+                return;
+            }
+            window.location.href = 'login.html';
+        }
+
+        loadProfile();
+    </script>
+</body>
+</html>

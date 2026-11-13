@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Level Gaming | Tournaments</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+    <div class="logo-text">
+        <span>NEXT LEVEL</span>
+        <span>GAMING & ESPORTS ARENA</span>
+    </div>
+    
+    <div class="nav-links">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="about.html" class="nav-link">ABOUT US</a>
+        <a href="experiences.html" class="nav-link">OVERVIEW</a>
+        <div class="nav-dropdown">
+            <a href="experiences.html" class="nav-link">EXPERIENCES</a>
+            <div class="nav-dropdown-menu">
+                <a href="pc-gaming.html">PC GAMING</a>
+                <a href="console-gaming.html">CONSOLE GAMING</a>
+                <a href="esports-arena.html">ESPORTS ARENA</a>
+                <a href="booking.html">CALCULATE FEES / BOOK</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="tournaments.html" class="nav-link">COMMUNITY</a>
+            <div class="nav-dropdown-menu">
+                <a href="tournaments.html">TOURNAMENTS</a>
+                <a href="membership.html">VIP MEMBERSHIP</a>
+                <a href="squad.html">SQUAD MANAGEMENT</a>
+                <a href="notifications.html">NOTIFICATIONS</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="profile.html" class="nav-link">ACCOUNT &amp; SUPPORT</a>
+            <div class="nav-dropdown-menu">
+                <a href="profile.html">PLAYER PROFILE</a>
+                <a href="login.html">LOG IN / SIGN UP</a>
+                <a href="checkout.html">PAYMENT</a>
+                <a href="checkout.html">CHECKOUT</a>
+                <a href="contact.html">CONTACT US</a>
+            </div>
+        </div>
+        <a href="booking.html" class="nav-book-btn">BOOK NOW</a>
+    </div>
+
+    <button class="menu-btn" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <h2>NAVIGATION</h2>
+            <button class="close-btn" onclick="toggleMenu()">✕</button>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">MAIN</div>
+            <a href="index.html" class="menu-link">HOME</a>
+            <a href="about.html" class="menu-link">ABOUT US</a>
+            <a href="experiences.html" class="menu-link">OVERVIEW</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">EXPERIENCES</div>
+            <a href="pc-gaming.html" class="menu-link">PC GAMING</a>
+            <a href="console-gaming.html" class="menu-link">CONSOLE GAMING</a>
+            <a href="esports-arena.html" class="menu-link">ESPORTS ARENA</a>
+            <a href="booking.html" class="menu-link red">CALCULATE FEES / BOOK</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">COMMUNITY</div>
+            <a href="tournaments.html" class="menu-link">TOURNAMENTS</a>
+            <a href="membership.html" class="menu-link">VIP MEMBERSHIP</a>
+            <a href="squad.html" class="menu-link">SQUAD MANAGEMENT</a>
+            <a href="notifications.html" class="menu-link">NOTIFICATIONS</a>
+        </div>
+        <div class="menu-group">
+            <div class="menu-group-title">ACCOUNT AND SUPPORT</div>
+            <a href="profile.html" class="menu-link">PLAYER PROFILE</a>
+            <a href="login.html" class="menu-link">LOG IN / SIGN UP</a>
+            <a href="checkout.html" class="menu-link">PAYMENT</a>
+            <a href="checkout.html" class="menu-link">CHECKOUT</a>
+            <a href="contact.html" class="menu-link">CONTACT US</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-title">
+            <h2>TOURNAMENTS & LEAGUES</h2>
+            <p>See the event information and contact the organizer about upcoming team registration.</p>
+        </div>
+
+        <div class="event-card">
+            <div class="event-header">
+                <div class="event-title">CALL OF DUTY: WARZONE</div>
+                <div class="event-status">EVENT DATE PASSED</div>
+            </div>
+            <p class="event-detail">Date: Saturday, 15 August 2026 | 14:00</p>
+            <p class="event-detail">Format: Trios (3v3) | Cross-platform</p>
+            <p class="event-prize">Prize Pool: R5,000 Pool</p>
+            <button class="btn btn-primary" style="margin-bottom: 0;" onclick="openModal('Call of Duty: Warzone')">ASK ABOUT NEXT EVENT</button>
+        </div>
+
+        <div class="event-card">
+            <div class="event-header">
+                <div class="event-title">VALORANT 5V5</div>
+                <div class="event-status">EVENT DATE PASSED</div>
+            </div>
+            <p class="event-detail">Date: Saturday, 22 August 2026 | 10:00</p>
+            <p class="event-detail">Format: 5v5 Standard | PC Only</p>
+            <p class="event-prize">Prize Pool: R10,000 Pool</p>
+            <button class="btn btn-primary" style="margin-bottom: 0;" onclick="openModal('Valorant 5v5')">ASK ABOUT NEXT EVENT</button>
+        </div>
+
+        <h3 style="color: #888; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin: 30px 0 15px;">TOURNAMENT RULES & FORMAT</h3>
+        <div class="card" style="padding: 20px 20px 5px;">
+            <ul class="exp-list" style="margin-bottom: 15px;">
+                <li style="margin-bottom: 15px;"><strong style="color: #fff;">Check-in:</strong> Teams must check in 30 minutes before the scheduled start time. Late teams forfeit their first match.</li>
+                <li style="margin-bottom: 15px;"><strong style="color: #fff;">Equipment:</strong> We provide peripherals. Players may bring their own mice and headsets.</li>
+                <li style="margin-bottom: 15px;"><strong style="color: #fff;">Fair play:</strong> Follow the event rules and organizer instructions throughout the tournament.</li>
+                <li style="margin-bottom: 15px;"><strong style="color: #fff;">Disputes:</strong> Raise match disputes with the tournament administrator promptly.</li>
+            </ul>
+        </div>
+
+        <h3 style="color: #888; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin: 30px 0 15px;">CURRENT STANDINGS (SEASON 4)</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Team</th>
+                        <th>Wins</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#1</td>
+                        <td>Team Void</td>
+                        <td>24</td>
+                        <td>2,450</td>
+                    </tr>
+                    <tr>
+                        <td>#2</td>
+                        <td>GhostGaming</td>
+                        <td>20</td>
+                        <td>2,100</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+<div id="eventModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>TEAM REGISTRATION ENQUIRY</h2>
+            <button class="modal-close" onclick="closeModal()">CLOSE</button>
+        </div>
+        <h3 class="modal-event-title" id="modalEventTitle">Call of Duty: Warzone</h3>
+        <p class="modal-desc">The listed event date has passed. This sends an enquiry about a future event, not a registration for the past event.</p>
+        
+        <div class="form-group">
+            <label>TEAM NAME</label>
+            <input type="text" id="teamName" class="form-control" placeholder="Your team name">
+        </div>
+        <div class="form-group">
+            <label>CAPTAIN NAME</label>
+            <input type="text" id="captainName" class="form-control" placeholder="Team captain">
+        </div>
+        <div class="form-group">
+            <label>CAPTAIN EMAIL</label>
+            <input type="email" id="captainEmail" class="form-control" placeholder="captain@example.com">
+        </div>
+        <div class="form-group">
+            <label>PLAYER NAMES (OPTIONAL)</label>
+            <textarea id="playerNames" class="form-control" rows="3" placeholder="Add player names"></textarea>
+        </div>
+        <button class="btn btn-primary" onclick="sendEmail()">CONTINUE IN EMAIL</button>
+        <p class="modal-footer-text">Review and send the email draft. The organizer must confirm an actual team registration.</p>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+   <script>
+    function toggleMenu() {
+        document.getElementById("mobileMenu").classList.toggle("active");
+        document.body.style.overflow = document.getElementById("mobileMenu").classList.contains("active") ? "hidden" : "auto";
+    }
+
+    const currentPath = window.location.pathname.split("/").pop() || "index.html";
+    let foundCurrent = false;
+    
+  document.querySelectorAll('.menu-link, .nav-link').forEach(link => {
+    if (link.getAttribute('href') === currentPath && !foundCurrent) {
+        foundCurrent = true;
+        link.classList.add('active');
+    }
+});
+
+    function openModal(eventName) {
+        const modal = document.getElementById('eventModal');
+        if (modal) {
+            document.getElementById('modalEventTitle').innerText = eventName;
+            modal.classList.add('active');
+        }
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('eventModal');
+        if (modal) {
+            modal.classList.remove('active');
+        }
+    }
+
+    function sendEmail() {
+        const teamName = document.getElementById('teamName').value.trim();
+        const captainName = document.getElementById('captainName').value.trim();
+        const captainEmail = document.getElementById('captainEmail').value.trim();
+        const playerNames = document.getElementById('playerNames').value.trim() || "N/A";
+        const eventName = document.getElementById('modalEventTitle').innerText;
+
+        if (!teamName || !captainName || !captainEmail) {
+            alert("Please fill in the Team Name, Captain Name, and Captain Email before continuing.");
+            return; 
+        }
+
+        const subject = encodeURIComponent(`Team Registration Enquiry - ${eventName}`);
+        const body = encodeURIComponent(`Hello,\n\nWe are interested in participating in the next ${eventName} event.\n\nTeam Name: ${teamName}\nCaptain Name: ${captainName}\nRoster:\n${playerNames}\n\nPlease let us know how to proceed.\n\nRegards,\n${captainName}`);
+        
+        window.location.href = `mailto:info@nextlevelgaming.co.za?subject=${subject}&body=${body}`;
+        closeModal();
+    }
+</script>
+</body>
+</html>
