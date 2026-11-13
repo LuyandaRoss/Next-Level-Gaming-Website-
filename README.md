@@ -25,10 +25,13 @@ What the Website Includes
 Technologies Used
 
 - HTML5 – Used to structure the website.
-- CSS3 – Used for the styling, layouts and responsive design.
+- CSS3 – Used for styling, layouts and responsive design.
 - JavaScript – Used for calculations, form validation and interactive features.
 - LocalStorage – Used to keep selected information available when moving between pages.
-- Netlify – Used to host the website.
+- EmailJS – Used to send messages through the website's contact functionality.
+- Google Forms – Used to collect customer enquiries.
+- Google Maps – Used to help customers find the gaming arena and view its location.
+- Vercel – Used to host and deploy the website.
 
 Design
 
